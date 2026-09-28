@@ -1,0 +1,5 @@
+---
+interface Props { class?: string; }
+const {class:className=''} = Astro.props;
+---
+<svg class:list={['smiley',className]} width="110" height="110" viewBox="0 0 110 110" aria-hidden="true"><circle cx="55" cy="55" r="51" fill="#f7ce46" stroke="#24221d" stroke-width="2"/><ellipse cx="38" cy="43" rx="5" ry="11" fill="#24221d"/><ellipse cx="71" cy="43" rx="5" ry="11" fill="#24221d"/><circle cx="27" cy="62" r="7" fill="#ee8896" opacity=".6"/><circle cx="82" cy="62" r="7" fill="#ee8896" opacity=".6"/><path d="M30 64q25 31 51-1" fill="none" stroke="#24221d" stroke-width="3" stroke-linecap="round"/></svg>

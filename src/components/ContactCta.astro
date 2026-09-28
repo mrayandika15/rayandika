@@ -1,0 +1,5 @@
+---
+import Smiley from './Smiley.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<section class="contact-cta reveal" aria-labelledby="cta-title"><a class="smiley-link" href={`${base}/contact/`} aria-label="Say hello"><Smiley /></a><h2 id="cta-title" class="display">Let's talk</h2><p class="hand">Have a workflow to automate or an agent team to build?<br />Let’s connect the tools, the people, and the software.</p><a class="ink-link" href={`${base}/contact/`}>Tell me about your project <span aria-hidden="true">↗</span></a></section>
