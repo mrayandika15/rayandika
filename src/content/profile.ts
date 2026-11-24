@@ -1,4 +1,4 @@
-// Update this file to personalize the site. An empty email hides email actions.
+// Update this file to personalize the site. Contact goes through Upwork: no email, phone, form or chat links.
 export const profile = {
   name: 'Muhammad Rayandika',
   shortName: 'mrayandika',
@@ -6,8 +6,16 @@ export const profile = {
   role: 'AI Agent Engineer | Multi-Agent Systems & Workflow Automation',
   location: 'Bandung, Indonesia',
   github: 'https://github.com/mrayandika15',
-  email: '',
+  upwork: 'https://www.upwork.com/freelancers/~013f1d1af195891734',
   portrait: 'images/rayandika.webp',
-  description: 'AI Agent Engineer with 4+ years of software engineering experience. I build multi-agent systems, AI Harness Workflows, and full-stack integrations that automate business processes.',
-  tools: ['TypeScript', 'React', 'Next.js', 'Vue', 'Python', 'Java', 'Node.js', 'MapLibre', 'Tailwind CSS', 'Material UI', 'Axios', 'Git'],
+  description: 'AI Agent Engineer in Bandung, Indonesia. I build multi-agent systems, RAG document agents and AI back offices for real businesses: net ROAS 4.82 on 1,083 orders for an online shop, and a team AI platform with 445★ on GitHub.',
+  // AI tools used in the case studies first, then the core stack.
+  tools: ['Claude Code', 'Claude API', 'OpenAI Agents SDK', 'MCP', 'RAG', 'Supabase', 'Gmail API', 'Google Drive API', 'TypeScript', 'Next.js', 'React', 'Node.js', 'Bun', 'Python', 'Tailwind CSS', 'Docker', 'Git'],
 };
+
+// One-line proof for each case study: used in the home hero and on the about page.
+export const recentWork = [
+  { slug: 'kiyoo', label: 'AI back office · net ROAS 4.82 on 1,083 orders', hook: 'An AI back office for an online shop: payments logged from Gmail, real profit on every Shopee order.' },
+  { slug: 'trina-ax', label: 'Team AI platform · 445★ on GitHub', hook: 'Self-hosted Claude Code and Codex for a whole company, with per-person access. Open source, 445★ on GitHub.' },
+  { slug: 'opencraft-docs', label: 'RAG document agent', hook: 'A RAG document agent that writes price quotes and MoUs from the company’s own price list and files them in Google Drive.' },
+];

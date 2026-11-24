@@ -1,0 +1,26 @@
+---
+// GitHub Pages serves dist/404.html (published at /rayandika/404.html) for any missing path under /rayandika/,
+// at the missing URL itself, so every link here must be absolute and include the base.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { recentWork } from '../content/profile';
+import { projects } from '../content/projects';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const recent = recentWork.map(item => ({ ...item, name: projects.find(project => project.slug === item.slug)!.name }));
+---
+<BaseLayout title="Page not found" description="This page doesn’t exist. Head back home or look at selected work." active="none" noindex>
+  <section class="not-found section-pad">
+    <header class="page-heading enter"><span class="hand">oops, wrong page</span><h1 class="display">404</h1></header>
+    <div class="not-found-note enter">
+      <span class="tape tape-top" aria-hidden="true"></span>
+      <p class="mono note-opener">This page doesn’t exist, or it moved while I was tidying up.</p>
+      <p class="hand">Maybe one of these is what you were looking for:</p>
+      <ul class="not-found-links">
+        <li><a class="button button-ink" href={`${base}/`}><span class="button-icon blue" aria-hidden="true">↗</span> Back home</a></li>
+        <li><a class="ink-link" href={`${base}/work/`}>All selected work ↗</a></li>
+      </ul>
+      <ul class="not-found-work">
+        {recent.map((item, i) => <li><a href={`${base}/work/${item.slug}/`}><span class:list={['torn mono', ['blush', 'mint', 'lavender'][i]]}>{item.name}</span> {item.label}</a></li>)}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

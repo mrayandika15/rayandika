@@ -55,7 +55,7 @@ if (copyButton && copyStatus && navigator.clipboard && window.isSecureContext) {
     if (!value) return;
     try {
       await navigator.clipboard.writeText(value);
-      copyStatus.textContent = value.includes('@') ? 'Email copied. Say hello whenever you like.' : 'Profile link copied. Thanks for stopping by!';
+      copyStatus.textContent = 'Upwork link copied. Thanks for stopping by!';
     } catch {
       copyStatus.textContent = `Couldn't copy automatically. You can copy this: ${value}`;
     }
