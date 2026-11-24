@@ -49,7 +49,7 @@ export const projects: Project[] = [
     description: 'Self-hosted Claude Code and Codex for a whole company: shared files, team skills, MCP tools and shared AI sessions, with per-person folder permissions. Open source, 445 GitHub stars.',
     hook: {
       problem: 'Only the person who set up Claude knew the company. Everyone else’s AI started from an empty folder.',
-      solution: 'One server gives the whole team the same AI, files and skills, each with their own access.',
+      solution: 'One shared AI for the whole team, each with their own access.',
     },
     logo: { src: 'images/trina-ax/trina-mark.webp', alt: 'Trina logo mark', width: 436, height: 390 },
     tags: ['TypeScript', 'Bun', 'Go', 'MCP'],
