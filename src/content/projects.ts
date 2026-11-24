@@ -20,6 +20,8 @@ export interface Project {
   shot?: { src: string; alt: string; label: string };
   /** Problem → solution headline shown instead of the name on cards and the case-study header. */
   hook?: { problem: string; solution: string };
+  /** Overrides the home folder's "FILE NO. / …" label. */
+  fileLabel?: string;
   /** Client brand mark, taped onto the card picture as a sticker. */
   logo?: { src: string; alt: string; width: number; height: number };
   /** Second site for a two-site case: a smaller screenshot window overlapping the first, and a second sticker. */
@@ -88,7 +90,7 @@ export const projects: Project[] = [
     focus: ['Ask in chat with a skill.', 'Retrieval before writing.', 'A real document, filed automatically.'],
   },
   {
-    number: '04', slug: 'landing-pages', category: 'Landing pages · 2 brands', name: 'Landing pages, 2 brands',
+    number: '04', slug: 'landing-pages', category: 'Landing pages · 2 brands', name: 'Landing pages, 2 brands', fileLabel: 'LANDING PAGES',
     description: 'ZELKA Labs now reaches page one of Google (average position 7.3, 6.4% CTR). YVYLORA got a premium brand page that turns marketplace shoppers into believers.',
     hook: {
       problem: 'A new game studio nobody could find on Google, and a hair-care brand that looked like every other shop.',

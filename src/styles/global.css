@@ -418,3 +418,18 @@
     .site-section + .site-section { margin-top: 70px; padding-top: 50px; }
   }
 }
+
+/* Fourth featured folder (home "selected works" shows 4) */
+@layer responsive {
+  .folder-3 { background: var(--pink); color: var(--ink); }
+  .folder-3::after { content: '✦  PROJECT 04' !important; }
+  .folder-3 .ink-link:hover { color: var(--paper); }
+  .folder-3 .hook-solution .hook-label { color: var(--ink); opacity: .8; }
+  .folder-tab.tab-pink { background: var(--pink); color: var(--ink); }
+  .folder-3 .project-picture { transform: rotate(2deg) translateY(15px); }
+  .folder-3 .project-picture:hover { transform: rotate(0) translateY(8px); }
+  @media (max-width: 620px) {
+    .folder-3 .project-picture { transform: rotate(2deg); }
+    .folder-3 .project-picture:hover { transform: rotate(0); }
+  }
+}
