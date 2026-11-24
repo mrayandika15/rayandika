@@ -70,7 +70,7 @@ export const projects: Project[] = [
     description: 'A RAG document agent: type “/opencraft-document” in chat, and it pulls prices, company data and the next document number, writes a branded SPH or MoU PDF and files it in Google Drive.',
     hook: {
       problem: 'Every price quote and MoU was rebuilt by hand. Prices, numbering and branding drifted between documents.',
-      solution: 'An AI agent now writes them from the company’s own price list, in one chat message.',
+      solution: 'An AI agent writes them from the company’s own price list.',
     },
     logo: { src: 'images/opencraft-docs/opencraft-mark.webp', alt: 'OpenCraft logo: three hands forming a triangle', width: 500, height: 420 },
     tags: ['Next.js', 'Supabase', 'Claude Code', 'Google Drive API', 'react-pdf'],
