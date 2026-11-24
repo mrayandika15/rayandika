@@ -286,3 +286,19 @@
     .work-card .hook-solution { font-size: 20px; }
   }
 }
+
+/* Screenshot cards: keep the whole frame and the client sticker inside the folder */
+@layer responsive {
+  .project-art.art-shot { aspect-ratio: 1.55; }
+  .art-shot .shot-window { inset: 7% 5% 0; }
+  .project-picture:has(.client-sticker) { width: 88%; justify-self: end; margin-right: 3%; transform: rotate(-2.5deg); }
+  .project-picture:has(.client-sticker):hover { transform: rotate(-1deg) translateY(-4px); }
+  .folder-body:has(.client-sticker) { padding-bottom: 64px; }
+  .project-picture .client-sticker { width: 100px; left: -26px; bottom: 4px; }
+  @media (max-width: 620px) {
+    .project-art.art-shot { aspect-ratio: 1.55; }
+    .project-picture:has(.client-sticker) { width: 92%; justify-self: center; margin: 4px auto 0; transform: rotate(-2deg); }
+    .folder-body:has(.client-sticker) { padding-bottom: 46px; }
+    .project-picture .client-sticker { width: 66px; left: -12px; bottom: 2px; }
+  }
+}
