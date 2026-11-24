@@ -5,8 +5,10 @@ import '@fontsource/kalam/latin-400.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import { profile } from '../content/profile';
-interface Props { title?: string; description?: string; active?: string; }
-const { title = 'A little code. A lot of curiosity.', description = profile.description, active = 'home' } = Astro.props;
+interface OgImage { src: string; width: number; height: number; alt: string; }
+interface Props { title?: string; description?: string; active?: string; ogImage?: OgImage; noindex?: boolean; }
+const defaultOgImage: OgImage = { src: 'images/og/default.png', width: 1200, height: 630, alt: 'Muhammad Rayandika, AI Agent Engineer: AI back office with net ROAS 4.82 on 1,083 orders, team AI platform with 445 stars on GitHub, RAG document agent.' };
+const { title = 'A little code. A lot of curiosity.', description = profile.description, active = 'home', ogImage = defaultOgImage, noindex = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -18,17 +20,22 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="theme-color" content="#f8f8f3" />
     <title>{profile.shortName} · {title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <link rel="sitemap" href={`${base}/sitemap-index.xml`} />
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={`${profile.shortName} · ${title}`} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL(`${base}/${profile.portrait}`, Astro.site)} />
-    <meta property="og:image:width" content="720" />
-    <meta property="og:image:height" content="960" />
-    <meta property="og:image:alt" content="Muhammad Rayandika smiling, wearing glasses and a denim jacket." />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:site_name" content={profile.name} />
+    <meta property="og:image" content={new URL(`${base}/${ogImage.src}`, Astro.site)} />
+    <meta property="og:image:width" content={String(ogImage.width)} />
+    <meta property="og:image:height" content={String(ogImage.height)} />
+    <meta property="og:image:alt" content={ogImage.alt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={new URL(`${base}/${ogImage.src}`, Astro.site)} />
+    <meta name="twitter:image:alt" content={ogImage.alt} />
+    <slot name="head" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
@@ -37,7 +44,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <main id="main"><slot /></main>
       <footer class="site-footer">
         <a class="footer-name" href={`${base}/`}>mrayandika<span aria-hidden="true">✳</span></a>
-        <span>A work in progress, just like me. © {new Date().getFullYear()}</span>
+        <span>Built in Bandung. <a class="footer-upwork" href={profile.upwork} target="_blank" rel="noopener noreferrer">Available on Upwork ↗<span class="sr-only"> (opens in a new tab)</span></a> © {new Date().getFullYear()}</span>
+        <a class="footer-playground" href={`${base}/playground/`}><span aria-hidden="true">✳</span> Playground</a>
         <a href="#top">Back to top ↑</a>
       </footer>
     </div>

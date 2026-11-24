@@ -1,22 +1,36 @@
 export const services = [
   { title: 'AI agent teams', description: 'Specialized agents that coordinate, delegate tasks, and work toward a shared business outcome.', deliverable: 'Multi-agent architecture & orchestration' },
-  { title: 'Workflows that do the work', description: 'AI Harness Workflows that connect agents to your tools and automate complex business processes, with human checkpoints where needed.', deliverable: 'Tool integration & workflow automation' },
+  { title: 'Workflows that do the work', description: 'Agent workflows that connect agents to your tools and automate complex business processes, with human checkpoints where needed.', deliverable: 'Tool integration & workflow automation' },
   { title: 'Software that holds it together', description: 'Full-stack applications, reusable interfaces, and reliable integrations that turn an agent workflow into a usable product.', deliverable: 'Full-stack development & optimization' },
 ];
 
-export const experience = [
+export interface Experience {
+  title: string;
+  /** Company (and dates) or area, shown in the mono label line. */
+  context: string;
+  dates?: string;
+  projects?: string;
+  link?: { href: string; label: string };
+  bullets: string[];
+}
+
+// Titles, companies and dates match the Upwork profile.
+export const experience: Experience[] = [
   {
-    title: 'AI Agent Engineer / Agentic Workflow Engineer',
-    context: 'AI orchestration · Workflow automation',
+    title: 'Software Engineer Lead',
+    context: 'Potenlab',
+    dates: 'Nov 2025 – Present',
+    link: { href: 'work/trina-ax/', label: 'See: Trina AX case study →' },
     bullets: [
-      'Designed and developed AI Harness Workflows and agentic team systems to automate complex business processes.',
+      'Designed and developed agent workflows and agentic team systems to automate complex business processes.',
       'Built multi-agent architectures where specialized AI agents collaborate, delegate tasks, and execute workflows with minimal human intervention.',
       'Integrated tools and designed scalable orchestration to improve operational efficiency, streamline team collaboration, and accelerate business execution.',
     ],
   },
   {
     title: 'Software Engineer',
-    context: 'Sovware',
+    context: 'Sovware Data Mandiri',
+    dates: 'Nov 2023 – Aug 2025',
     bullets: [
       'Developed and maintained scalable solutions using Python and Java, and built reusable frontend libraries to improve product performance and user experience.',
       'Optimized codebases and software architecture to strengthen reliability and long-term maintainability.',
@@ -24,8 +38,10 @@ export const experience = [
     ],
   },
   {
-    title: 'Software Engineer',
-    context: 'Kalbe Farma, Gaji Cermat & CPP projects',
+    title: 'Frontend Developer',
+    context: 'AKASIA',
+    dates: 'Oct 2023 – Aug 2024',
+    projects: 'Projects: Kalbe Farma, Gaji Cermat & CPP',
     bullets: [
       'Led feature development and delivery across multiple projects, including interactive Polling, Applications, and Agenda modules.',
       'Maintained and optimized Gaji Cermat web and mobile applications for performance, reliability, and user experience.',

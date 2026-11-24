@@ -35,9 +35,6 @@ const parts: {title: string; note: string; paragraphs: string[]; shots: Shot[]}[
       'Every morning an agent recaps yesterday’s ads against real orders (“ROAS bersih”). It also compares campaign settings (GMV Max Auto vs target ROAS) and daily budget ranges, so the owner can see which actually earns more profit per day.',
     ],
     shots: [
-      { file: '01-marketing-overview.webp', full: '01-marketing-overview-full.webp', width: 1600, height: 1000,
-        alt: 'Marketing dashboard for all orders: Rp126.07M money in, 1,083 clean orders, net ROAS 4.82, Rp48.85M profit, a per-order breakdown, and an order funnel from 1,427 created to 1,083 clean.',
-        caption: 'Marketing, all orders (“Semua”). “Uang masuk” = money in, “Order bersih” = clean orders, “ROAS bersih” = net ROAS. “Per order bersih” breaks one clean order into money in, ad cost, and product cost (HPP).' },
       { file: '02-marketing-ad-comparison.webp', full: '02-marketing-ad-comparison-full.webp', width: 1600, height: 1000,
         alt: 'Two comparison panels: GMV Max Auto versus target-ROAS campaigns (ROAS 8.3 and 6), and days grouped by daily ad spend, each showing ad cost, orders, money in, net ROAS and profit per day.',
         caption: 'Which settings earn more? Days grouped by campaign type and by daily ad budget (“Iklan/hari” = ads per day, “Profit/hari” = profit per day, “hari” = days).' },
@@ -70,7 +67,7 @@ const stats = [
 ];
 const stack = ['Next.js', 'Supabase (Postgres)', 'Gmail API', 'Cloudinary', 'AI agents', 'Telegram Bot'];
 ---
-<BaseLayout title={project.name} description={project.description} active="work">
+<BaseLayout title={project.name} description={project.description} active="work" ogImage={{ src: 'images/og/kiyoo.jpg', width: 1200, height: 630, alt: 'Kiyoo back office, Marketing for all orders: Rp126.07M money in, 1,083 clean orders, net ROAS 4.82, Rp48.85M profit.' }}>
   <article class="case-study kiyoo-case section-pad">
     <a class="ink-link back-link" href={`${base}/work/`}>← Back to selected work</a>
     <header class="case-header enter">
@@ -89,8 +86,8 @@ const stack = ['Next.js', 'Supabase (Postgres)', 'Gmail API', 'Cloudinary', 'AI 
     </header>
 
     <figure class="case-hero case-shot-hero reveal">
-      <a href={img('07-storefront-full.webp')} target="_blank" rel="noopener"><img src={img('07-storefront.webp')} width="1600" height="1000" alt="The public Kiyoo storefront: a koala mascot, a ‘Welcome to Kiyoo’ heading, a short brand description, and a button to place a regular order." /><span class="sr-only"> (open full-size image)</span></a>
-      <figcaption>The public shop at kiyoo.id. Everything below is the private back office behind it. Real screenshots, names masked.</figcaption>
+      <a href={img('01-marketing-overview-full.webp')} target="_blank" rel="noopener"><img src={img('01-marketing-overview.webp')} width="1600" height="1000" alt="Marketing dashboard for all orders: Rp126.07M money in, 1,083 clean orders, net ROAS 4.82, Rp48.85M profit, a per-order breakdown, and an order funnel from 1,427 created to 1,083 clean." /><span class="sr-only"> (open full-size image)</span></a>
+      <figcaption>Real data from the shop’s private back office: all orders since 4 Sep 2026 (“Semua”), names masked. “Uang masuk” = money in, “Order bersih” = clean orders, “ROAS bersih” = net ROAS. “Per order bersih” breaks one clean order into money in, ad cost, and product cost (HPP).</figcaption>
     </figure>
 
     <div class="case-story kiyoo-story">
