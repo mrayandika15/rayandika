@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectVisual from '../../components/ProjectVisual.astro';
-import {projects, type Project} from '../../content/projects';
-export function getStaticPaths(){return projects.map(project=>({params:{slug:project.slug},props:{project}}));}
+import {projects, nextProject, type Project} from '../../content/projects';
+// Client case studies have their own page (e.g. work/kiyoo.astro).
+export function getStaticPaths(){return projects.filter(project=>!project.client).map(project=>({params:{slug:project.slug},props:{project}}));}
 interface Props {project: Project;}
 const {project}=Astro.props;
 const base=import.meta.env.BASE_URL.replace(/\/$/,'');
-const next=projects[(projects.findIndex(item => item.slug === project.slug)+1)%projects.length] ?? projects[0];
+const next=nextProject(project.slug);
 ---
 <BaseLayout title={project.name} description={project.description} active="work">
   <article class="case-study section-pad"><a class="ink-link back-link" href={`${base}/work/`}>← Back to selected work</a><header class="case-header enter"><div><span class="mono">✦ File {project.number} / {project.category}</span><h1 class="display">{project.name}</h1><p>{project.description}</p><div class="case-tags">{project.tags.map(tag=><span class="torn butter mono">{tag}</span>)}</div></div><dl class="case-facts"><div class="torn lavender"><dt>Type</dt><dd>Personal project</dd></div><div class="torn butter"><dt>Explore</dt><dd>Source on GitHub</dd></div><div class="torn mint"><dt>Focus</dt><dd>{project.category}</dd></div><div class="torn blush"><dt>Language</dt><dd>TypeScript</dd></div></dl></header><figure class="case-hero reveal"><ProjectVisual kind={project.visual}/><figcaption>Concept illustration of the project's theme, not an application screenshot.</figcaption></figure><div class="case-content"><section class="reveal"><span class="hand">the idea</span><h2>A small problem.<br />Room to make it better.</h2><p>{project.idea}</p></section><section class="reveal"><span class="hand">inside the project</span><h2>What it's about</h2><ul class="case-focus">{project.focus.map((item,i)=><li><span class:list={['torn',['butter','mint','blush'][i]]}>0{i+1}</span><p>{item}</p></li>)}</ul></section><aside class="source-note reveal"><span class="hand">the best way to explore it?</span><h2>Go straight to the source.</h2><p>This is a personal exploration. The repository is the place to see the implementation and its current state.</p><a class="button button-ink" href={project.url} target="_blank" rel="noopener noreferrer"><span class="button-icon blue" aria-hidden="true">↗</span> Open repository<span class="sr-only"> (opens in a new tab)</span></a></aside></div><a class="next-project" href={`${base}/work/${next.slug}/`}><span class="hand">next file →</span><span class="display">{next.name}</span><span aria-hidden="true">↗</span></a></article>

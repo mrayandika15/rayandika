@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {projects, nextProject} from '../../content/projects';
+const project = projects.find(item => item.slug === 'kiyoo')!;
+const next = nextProject(project.slug);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const img = (name: string) => `${base}/images/kiyoo/${name}`;
+
+interface Shot { file: string; full?: string; width: number; height: number; alt: string; caption: string; narrow?: boolean; }
+const parts: {title: string; note: string; paragraphs: string[]; shots: Shot[]}[] = [
+  {
+    note: 'part one: finance',
+    title: 'A finance tracker that fills itself.',
+    paragraphs: [
+      'The Gmail API watches the owner’s inbox for payment notifications. Each one triggers an AI agent that records the transaction (amount, who paid, daily / opex / capex) and, for every Shopee withdrawal, decides how much is capital and how much is profit.',
+      'A Telegram bot posts each transaction as it lands and a summary every night.',
+    ],
+    shots: [
+      { file: '04-finance-auto-logged.webp', full: '04-finance-auto-logged-full.webp', width: 1600, height: 1000,
+        alt: 'Finance page listing spending transactions by day, each tagged DAILY with the staff member who paid and an envelope icon marking it as logged from email, with a green Lunas button and the month’s total spending on the right.',
+        caption: 'Finance: every transaction with a ✉ icon was logged automatically from a payment email. “Lunas” = paid; “Pengeluaran” = spending, “Pemasukan” = income.' },
+      { file: '08-telegram-agent.webp', width: 640, height: 968, narrow: true,
+        alt: 'Telegram chat with the shop’s bot: one message per transaction as it lands, a nightly summary grouped by staff member, a Shopee withdrawal notice, and a morning ad recap with net ROAS.',
+        caption: 'The Telegram bot: live transactions, the nightly summary, and the morning ad recap. “Penarikan” = withdrawal, “Iklan” = ads.' },
+      { file: '03-report-withdrawals.webp', full: '03-report-withdrawals-full.webp', width: 1600, height: 1000,
+        alt: 'Report page for November 2026 with capital and profit balances, a daily bookkeeping chart split into capital and profit, weekly cash flow, and a table splitting each Shopee withdrawal into capital and profit.',
+        caption: 'Report: each Shopee withdrawal split into “Modal” (capital to put back) and “Profit”, plus daily bookkeeping and weekly cash flow (“Masuk” = in, “Keluar” = out).' },
+    ],
+  },
+  {
+    note: 'part two: marketing',
+    title: 'Real ROAS instead of Shopee’s ROAS.',
+    paragraphs: [
+      'Shopee orders and ad spend are synced in. The dashboard counts only money that actually lands in the balance, after fees, cancellations, returns, and product cost (HPP per product).',
+      'Every morning an agent recaps yesterday’s ads against real orders (“ROAS bersih”). It also compares campaign settings (GMV Max Auto vs target ROAS) and daily budget ranges, so the owner can see which actually earns more profit per day.',
+    ],
+    shots: [
+      { file: '01-marketing-overview.webp', full: '01-marketing-overview-full.webp', width: 1600, height: 1000,
+        alt: 'Marketing dashboard for the last 30 days: Rp40.87M money in, 353 clean orders, net ROAS 4.26, Rp13.07M profit, a per-order breakdown, and an order funnel from 466 created to 353 clean.',
+        caption: 'Marketing, last 30 days. “Uang masuk” = money in, “Order bersih” = clean orders, “ROAS bersih” = net ROAS. “Per order bersih” breaks one clean order into money in, ad cost, and product cost (HPP).' },
+      { file: '02-marketing-ad-comparison.webp', full: '02-marketing-ad-comparison-full.webp', width: 1600, height: 1000,
+        alt: 'Two comparison panels: GMV Max Auto versus GMV Max ROAS 6 campaigns, and days grouped by daily ad spend, each showing ad cost, orders, money in, net ROAS and profit per day.',
+        caption: 'Which settings earn more? Days grouped by campaign type and by daily ad budget (“Iklan/hari” = ads per day, “Profit/hari” = profit per day, “hari” = days).' },
+    ],
+  },
+  {
+    note: 'part three: production',
+    title: 'Tailor (vendor) tracking.',
+    paragraphs: [
+      'A daily log of pieces sent out and received, per tailor and per product. It shows what’s still with each tailor and calculates wages owed, and feeds the stock page.',
+    ],
+    shots: [
+      { file: '05-tailor-tracking.webp', full: '05-tailor-tracking-full.webp', width: 1600, height: 1000,
+        alt: 'Tailor page for one day: tailor and product selectors showing pieces still with each tailor, Keluar and Terima counters, and the day’s log with wages.',
+        caption: '“Penjahit” = tailor. Log pieces “Keluar” (sent out) and “Terima” (received) per tailor and product; “di penjahit” shows what’s still with them and “upah” the wages.' },
+      { file: '06-stock.webp', full: '06-stock-full.webp', width: 1600, height: 1000,
+        alt: 'Stock page with totals for products, variants, units and a low-stock alert, above a product with its variants and editable unit counts.',
+        caption: 'Stock, fed by the tailor log: products, variants, total units, and a low-stock alert (“Stok ≤ 5”).' },
+    ],
+  },
+];
+
+const stats = [
+  { value: '353', label: 'clean orders', detail: '466 created; 57 unpaid, 55 cancelled, 1 returned filtered out', color: 'butter' },
+  { value: '4.26', label: 'net ROAS', detail: 'on money that actually landed: Rp40.87M in, Rp9.6M on ads', color: 'mint' },
+  { value: 'Rp13.07M', label: 'profit after ads and product cost', detail: 'last 30 days', color: 'lavender' },
+  { value: 'Rp37k', label: 'profit per order', detail: 'Rp115,773 in · Rp27,208 ads · Rp51,533 product cost · Rp37,033 profit', color: 'blush' },
+  { value: '4.57 vs 3.64', label: 'net ROAS by daily ad budget', detail: 'Rp200–300k days (20 days) vs days above Rp400k', color: 'mint' },
+  { value: '15', label: 'withdrawals split automatically', detail: 'into capital and profit: 286 orders in November', color: 'butter' },
+];
+const stack = ['Next.js', 'Supabase (Postgres)', 'Gmail API', 'Cloudinary', 'AI agents', 'Telegram Bot'];
+---
+<BaseLayout title={project.name} description={project.description} active="work">
+  <article class="case-study kiyoo-case section-pad">
+    <a class="ink-link back-link" href={`${base}/work/`}>← Back to selected work</a>
+    <header class="case-header enter">
+      <div>
+        <span class="mono">✦ File {project.number} / {project.category}</span>
+        <h1 class="display">{project.name}</h1>
+        <p>{project.description}</p>
+        <div class="case-tags">{project.tags.map(tag => <span class="torn butter mono">{tag}</span>)}</div>
+      </div>
+      <dl class="case-facts">
+        <div class="torn lavender"><dt>Type</dt><dd>Client project</dd></div>
+        <div class="torn butter"><dt>Live shop</dt><dd><a class="case-fact-link" href={project.url} target="_blank" rel="noopener noreferrer">kiyoo.id ↗<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+        <div class="torn mint"><dt>Focus</dt><dd>{project.category}</dd></div>
+        <div class="torn blush"><dt>Role</dt><dd>Designed and built end to end</dd></div>
+      </dl>
+    </header>
+
+    <figure class="case-hero case-shot-hero reveal">
+      <a href={img('07-storefront-full.webp')} target="_blank" rel="noopener"><img src={img('07-storefront.webp')} width="1600" height="1000" alt="The public Kiyoo storefront: a koala mascot, a ‘Welcome to Kiyoo’ heading, a short brand description, and a button to place a regular order." /><span class="sr-only"> (open full-size image)</span></a>
+      <figcaption>The public shop at kiyoo.id. Everything below is the private back office behind it. Real screenshots, names masked.</figcaption>
+    </figure>
+
+    <div class="kiyoo-story">
+      <section class="story-text reveal">
+        <span class="hand">the problem</span>
+        <h2>Three fronts at once.<br />No data to steer by.</h2>
+        <p>Kiyoo is an online shop selling K-pop merch and cute everyday goods on Shopee. Like most small shops, it was hard to manage on three fronts at once: finance, marketing, and data.</p>
+        <ul class="problem-list">
+          <li><span class="torn butter">01</span><p><strong>Spending lived in bank and e-wallet notification emails.</strong> Nobody had time to log them, so the owner couldn’t see where the money went, or how much of each Shopee withdrawal was capital to put back versus actual profit.</p></li>
+          <li><span class="torn mint">02</span><p><strong>Shopee’s ROAS looked fine but wasn’t real.</strong> It’s calculated on gross sales, before Shopee’s fees, cancellations, returns, and the cost of the product. A “good” campaign could still be losing money.</p></li>
+          <li><span class="torn blush">03</span><p><strong>Production was tracked in chat.</strong> Pieces sent to home tailors and pieces returned weren’t recorded, so stock and wages owed were guesses.</p></li>
+        </ul>
+        <p>Marketing needed to be data-driven, and the data didn’t exist yet.</p>
+      </section>
+
+      <span class="hand story-divider reveal">what I built ↓</span>
+
+      {parts.map((part, i) => (
+        <section class="story-part">
+          <div class="story-text reveal">
+            <span class="hand">{part.note}</span>
+            <h2><span class="part-number display">0{i + 1}</span> {part.title}</h2>
+            {part.paragraphs.map(text => <p>{text}</p>)}
+          </div>
+          <div class="shot-row">
+            {part.shots.map(shot => (
+              <figure class:list={['case-shot', 'reveal', { 'case-shot-narrow': shot.narrow }]}>
+                <a href={img(shot.full ?? shot.file)} target="_blank" rel="noopener"><img src={img(shot.file)} width={shot.width} height={shot.height} alt={shot.alt} loading="lazy" /><span class="sr-only"> (open full-size image)</span></a>
+                <figcaption>{shot.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <section class="story-results reveal" aria-labelledby="results-title">
+        <span class="hand">the result</span>
+        <h2 id="results-title">Last 30 days, real numbers.</h2>
+        <ul class="stat-grid">
+          {stats.map(stat => <li class:list={['stat-note', stat.color]}><span class="stat-value display">{stat.value}</span><span class="stat-label">{stat.label}</span><span class="stat-detail mono">{stat.detail}</span></li>)}
+        </ul>
+        <p class="results-note">The owner gets the day’s money and ad numbers in Telegram, without opening three dashboards.</p>
+      </section>
+
+      <section class="story-text reveal">
+        <span class="hand">built with</span>
+        <div class="case-tags stack-tags">{stack.map((tool, i) => <span class:list={['torn', ['butter', 'mint', 'lavender', 'blush'][i % 4]]}>{tool}</span>)}</div>
+        <span class="hand role-note">my role</span>
+        <p>Client project. Designed and built end to end.</p>
+      </section>
+    </div>
+
+    <a class="next-project" href={`${base}/work/${next.slug}/`}><span class="hand">next file →</span><span class="display">{next.name}</span><span aria-hidden="true">↗</span></a>
+  </article>
+</BaseLayout>

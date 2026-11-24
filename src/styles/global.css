@@ -187,3 +187,69 @@
     .experience-entry h3 { font-size: 19px; }
   }
 }
+
+/* Client case study (Kiyoo): real screenshots in the card frame and on the case page. */
+@layer artwork {
+  .art-shot { background: #3a2f38; background-image: radial-gradient(ellipse at 40% 35%,#c4708f55,transparent 75%); }
+  .shot-window { position: absolute; inset: 9% 6% 0; display: flex; flex-direction: column; background: #faf6f8; border: 1px solid #ffffff3d; border-bottom: 0; border-radius: 7px 7px 0 0; transform: rotate(-1.5deg) translateY(3%); box-shadow: 10px 19px 25px #120d108a; overflow: hidden; }
+  .shot-window .window-bar { color: #7b6672; border-color: #eadde3; background: #f3e9ee; }
+  .shot-window img { flex: 1; min-height: 0; width: 100%; object-fit: cover; object-position: left top; }
+}
+@layer components {
+  .case-shot-hero a, .case-shot a { display: block; cursor: zoom-in; }
+  .case-shot-hero img { width: 100%; aspect-ratio: 1.6; object-fit: cover; }
+  .kiyoo-story { margin: 65px auto; }
+  .story-text { max-width: 680px; margin-inline: auto; }
+  .kiyoo-story .hand { font-size: 20px; display: block; margin-bottom: 15px; }
+  .kiyoo-story h2 { font-size: 36px; margin-bottom: 22px; }
+  .kiyoo-story p { color: var(--muted); font-size: 14px; line-height: 1.9; }
+  .story-text p + p { margin-top: 14px; }
+  .story-text strong { color: var(--ink); }
+  .problem-list { list-style: none; padding: 0; margin: 24px 0; display: grid; gap: 17px; }
+  .problem-list li { display: flex; align-items: flex-start; gap: 18px; }
+  .problem-list li > span { font-family: var(--display); font-size: 28px; flex-shrink: 0; padding: 7px 14px; }
+  .story-divider { text-align: center; margin: 70px 0 10px; transform: rotate(-2deg); }
+  .story-part { margin-top: 60px; }
+  .part-number { font-size: 1.15em; color: var(--blue); margin-right: 4px; }
+  .shot-row { display: grid; gap: 44px; max-width: 1080px; margin: 38px auto 0; }
+  .case-shot { border: 1px solid #c2c2b6; padding: 9px; background: var(--paper); box-shadow: 4px 6px 0 #11140a14; }
+  .case-shot:nth-child(odd) { transform: rotate(-.5deg); }
+  .case-shot:nth-child(even) { transform: rotate(.5deg); }
+  .case-shot img { width: 100%; }
+  .case-shot-narrow { width: min(100%, 380px); justify-self: center; }
+  .case-shot figcaption { font-size: 12px; line-height: 1.7; text-align: center; color: var(--muted); padding: 12px 8px 4px; text-wrap: pretty; }
+  .story-results { max-width: 1000px; margin: 90px auto 60px; text-align: center; }
+  .stat-grid { list-style: none; padding: 0; margin: 34px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px 22px; text-align: left; }
+  .stat-note { display: flex; flex-direction: column; gap: 8px; padding: 24px 22px 22px; box-shadow: 2px 7px 10px #25251e16, 0 1px 2px #25251e10; transform: rotate(-1.2deg); }
+  .stat-note:nth-child(even) { transform: rotate(1.2deg); }
+  .stat-value { font-size: clamp(44px, 5vw, 62px); line-height: .9; }
+  .stat-label { font-family: var(--hand); font-size: 19px; line-height: 1.3; }
+  .stat-detail { font-size: 8px; line-height: 1.7; letter-spacing: .06em; opacity: .8; }
+  .kiyoo-story .results-note { margin-top: 34px; color: var(--ink); font-family: var(--hand); font-size: 19px; }
+  .stack-tags { margin-top: 0; }
+  .stack-tags .torn { font-size: 13px; font-weight: 750; padding: 7px 16px; }
+  .stack-tags .torn:nth-child(odd) { transform: rotate(-2deg); }
+  .stack-tags .torn:nth-child(even) { transform: rotate(2deg); }
+  .kiyoo-story .role-note { margin-top: 34px; }
+  .case-fact-link { border-bottom: 1px solid currentColor; }
+  .case-fact-link:hover { color: var(--blue); }
+  .work-file-3 { background: var(--pink); }
+}
+@layer responsive {
+  @media (max-width: 800px) {
+    .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .kiyoo-story h2 { font-size: 30px; }
+    .kiyoo-story p { font-size: 13px; }
+    .story-text { padding-inline: 2%; }
+  }
+  @media (max-width: 620px) {
+    .kiyoo-story { margin-block: 45px; }
+    .stat-grid { grid-template-columns: 1fr; gap: 20px; }
+    .case-shot { padding: 5px; }
+    .case-shot:nth-child(n) { transform: none; }
+    .case-shot figcaption { font-size: 11px; }
+    .shot-row { gap: 30px; }
+    .problem-list li > span { font-size: 22px; padding: 5px 10px; }
+    .story-divider { margin-top: 50px; }
+  }
+}
