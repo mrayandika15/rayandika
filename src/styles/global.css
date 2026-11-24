@@ -188,7 +188,7 @@
   }
 }
 
-/* Client case study (Kiyoo): real screenshots in the card frame and on the case page. */
+/* Client and company case studies (Kiyoo, Trina AX): real screenshots in the card frame and on the case page. */
 @layer artwork {
   .art-shot { background: #3a2f38; background-image: radial-gradient(ellipse at 40% 35%,#c4708f55,transparent 75%); }
   .shot-window { position: absolute; inset: 9% 6% 0; display: flex; flex-direction: column; background: #faf6f8; border: 1px solid #ffffff3d; border-bottom: 0; border-radius: 7px 7px 0 0; transform: rotate(-1.5deg) translateY(3%); box-shadow: 10px 19px 25px #120d108a; overflow: hidden; }
@@ -198,11 +198,11 @@
 @layer components {
   .case-shot-hero a, .case-shot a { display: block; cursor: zoom-in; }
   .case-shot-hero img { width: 100%; aspect-ratio: 1.6; object-fit: cover; }
-  .kiyoo-story { margin: 65px auto; }
+  .case-story { margin: 65px auto; }
   .story-text { max-width: 680px; margin-inline: auto; }
-  .kiyoo-story .hand { font-size: 20px; display: block; margin-bottom: 15px; }
-  .kiyoo-story h2 { font-size: 36px; margin-bottom: 22px; }
-  .kiyoo-story p { color: var(--muted); font-size: 14px; line-height: 1.9; }
+  .case-story .hand { font-size: 20px; display: block; margin-bottom: 15px; }
+  .case-story h2 { font-size: 36px; margin-bottom: 22px; }
+  .case-story p { color: var(--muted); font-size: 14px; line-height: 1.9; }
   .story-text p + p { margin-top: 14px; }
   .story-text strong { color: var(--ink); }
   .problem-list { list-style: none; padding: 0; margin: 24px 0; display: grid; gap: 17px; }
@@ -225,25 +225,29 @@
   .stat-value { font-size: clamp(44px, 5vw, 62px); line-height: .9; }
   .stat-label { font-family: var(--hand); font-size: 19px; line-height: 1.3; }
   .stat-detail { font-size: 8px; line-height: 1.7; letter-spacing: .06em; opacity: .8; }
-  .kiyoo-story .results-note { margin-top: 34px; color: var(--ink); font-family: var(--hand); font-size: 19px; }
+  .case-story .results-note { margin-top: 34px; color: var(--ink); font-family: var(--hand); font-size: 19px; }
   .stack-tags { margin-top: 0; }
   .stack-tags .torn { font-size: 13px; font-weight: 750; padding: 7px 16px; }
   .stack-tags .torn:nth-child(odd) { transform: rotate(-2deg); }
   .stack-tags .torn:nth-child(even) { transform: rotate(2deg); }
-  .kiyoo-story .role-note { margin-top: 34px; }
+  .case-story .role-note { margin-top: 34px; }
   .case-fact-link { border-bottom: 1px solid currentColor; }
   .case-fact-link:hover { color: var(--blue); }
   .work-file-3 { background: var(--pink); }
+  .work-file-4 { background: var(--green); color: var(--paper); }
+  .quote-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quote-note .stat-label { font-size: 20px; }
+  .case-story .results-subhead { margin-top: 64px; }
 }
 @layer responsive {
   @media (max-width: 800px) {
     .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .kiyoo-story h2 { font-size: 30px; }
-    .kiyoo-story p { font-size: 13px; }
+    .case-story h2 { font-size: 30px; }
+    .case-story p { font-size: 13px; }
     .story-text { padding-inline: 2%; }
   }
   @media (max-width: 620px) {
-    .kiyoo-story { margin-block: 45px; }
+    .case-story { margin-block: 45px; }
     .stat-grid { grid-template-columns: 1fr; gap: 20px; }
     .case-shot { padding: 5px; }
     .case-shot:nth-child(n) { transform: none; }

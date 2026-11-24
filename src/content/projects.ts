@@ -12,12 +12,14 @@ export interface Project {
   focus: string[];
   /** Client work with its own hand-written page in src/pages/work/<slug>.astro. */
   client?: boolean;
+  /** Company product (built at an employer) rather than client work. Set together with `client` for the hand-written page. */
+  company?: boolean;
   /** Real screenshot shown in the card frame (used when visual is 'shot'). */
   shot?: { src: string; alt: string; label: string };
   /** Problem → solution headline shown instead of the name on cards and the case-study header. */
   hook?: { problem: string; solution: string };
   /** Client brand mark, taped onto the card picture as a sticker. */
-  logo?: { src: string; alt: string };
+  logo?: { src: string; alt: string; width: number; height: number };
 }
 
 // Personal projects link to public repositories and use concept illustrations.
@@ -30,7 +32,7 @@ export const projects: Project[] = [
       problem: 'Shopee ads looked profitable. Nobody could prove it.',
       solution: 'AI agents now track real profit on every order.',
     },
-    logo: { src: 'images/kiyoo/kiyoo-mascot.webp', alt: 'Kiyoo’s koala mascot' },
+    logo: { src: 'images/kiyoo/kiyoo-mascot.webp', alt: 'Kiyoo’s koala mascot', width: 501, height: 520 },
     tags: ['Next.js', 'Supabase', 'Gmail API', 'Cloudinary'],
     url: 'https://kiyoo.id',
     visual: 'shot', color: 'pink', client: true,
@@ -43,7 +45,26 @@ export const projects: Project[] = [
     focus: ['A finance tracker that fills itself.', 'Real ROAS instead of Shopee’s ROAS.', 'Tailor (vendor) tracking.'],
   },
   {
-    number: '02', slug: 'harness-agent-canvas', category: 'Agent tooling', name: 'Harness Agent Canvas',
+    number: '02', slug: 'trina-ax', category: 'Company product · Potenlab', name: 'Trina AX',
+    description: 'Self-hosted Claude Code and Codex for a whole company: shared files, team skills, MCP tools and shared AI sessions, with per-person folder permissions. Open source, 445 GitHub stars.',
+    hook: {
+      problem: 'Only the person who set up Claude knew the company. Everyone else’s AI started from an empty folder.',
+      solution: 'One server gives the whole team the same AI, files and skills, each with their own access.',
+    },
+    logo: { src: 'images/trina-ax/trina-mark.webp', alt: 'Trina logo mark', width: 436, height: 390 },
+    tags: ['TypeScript', 'Bun', 'Go', 'MCP'],
+    url: 'https://ax.trina.app',
+    visual: 'shot', color: 'blue', client: true, company: true,
+    shot: {
+      src: 'images/trina-ax/02-site-one-server.webp',
+      alt: 'Trina AX product site, How it works: Mina, Alex and Sam each ask their own AI, all connected to one Trina server with each person’s own access.',
+      label: 'trina / one server · whole team',
+    },
+    idea: 'Self-hosted Claude Code and Codex for a whole company, with shared files, team skills and per-person access.',
+    focus: ['One server, the whole team’s AI.', 'Team skills and shared files.', 'Per-person access, checked on every file.', 'Work together with AI.'],
+  },
+  {
+    number: '03', slug: 'harness-agent-canvas', category: 'Agent tooling', name: 'Harness Agent Canvas',
     description: 'An exploration of visual tooling for agent workflows. Bringing the pieces of an AI system into one canvas.',
     tags: ['Next.js', 'TypeScript', 'React Flow'],
     url: 'https://github.com/mrayandika15/harness-agent-canvas',
@@ -52,7 +73,7 @@ export const projects: Project[] = [
     focus: ['A visual workspace for an agent’s skills and connections.', 'Separate places for agent settings, integrations, and conversations.', 'A Next.js interface with React Flow for the canvas.'],
   },
   {
-    number: '03', slug: 'korean-halal-map', category: 'Location & discovery', name: 'Korean Halal Map',
+    number: '04', slug: 'korean-halal-map', category: 'Location & discovery', name: 'Korean Halal Map',
     description: 'A map-based web project exploring halal discovery in Korea. A practical idea, built around finding your way.',
     tags: ['TypeScript', 'Next.js', 'Maps'],
     url: 'https://github.com/mrayandika15/korean-halal-map',
@@ -61,7 +82,7 @@ export const projects: Project[] = [
     focus: ['Location discovery as the central interface.', 'A web experience built with Next.js and TypeScript.', 'A practical exploration of a specific everyday need.'],
   },
   {
-    number: '04', slug: 'a-little-less-to-do', category: 'Everyday productivity', name: 'A little less to-do.',
+    number: '05', slug: 'a-little-less-to-do', category: 'Everyday productivity', name: 'A little less to-do.',
     description: 'A task-list application built with Next.js and TypeScript. An exercise in making everyday interactions feel straightforward.',
     tags: ['Next.js', 'TypeScript', 'UI development'],
     url: 'https://github.com/mrayandika15/todo-list-knitto',

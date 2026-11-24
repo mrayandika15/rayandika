@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {projects, nextProject} from '../../content/projects';
+const project = projects.find(item => item.slug === 'trina-ax')!;
+const next = nextProject(project.slug);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const img = (name: string) => `${base}/images/trina-ax/${name}`;
+const logo = project.logo!;
+
+interface Shot { file: string; full?: string; width: number; height: number; alt: string; caption: string; narrow?: boolean; }
+const parts: {title: string; note: string; paragraphs: string[]; shots: Shot[]}[] = [
+  {
+    note: 'part one: one server',
+    title: 'One server, the whole team’s AI.',
+    paragraphs: [
+      'Connect one Claude or OpenAI account, Google Drive, Slack, any MCP server and the company API once. Everyone gets it in the browser, desktop apps (Mac, Windows, Linux) and phones (iPhone, Android), in six languages.',
+      'Each person gets a real agent: up to 150 tool rounds per answer and 4 sub-agents at a time.',
+    ],
+    shots: [
+      { file: '02-site-one-server.webp', full: '02-site-one-server-full.webp', width: 1600, height: 1000,
+        alt: 'Trina AX product site, How it works, step three “Invite your team”: Mina, Alex and Sam each ask their own AI in separate windows, all connected by dotted lines to one “Your Trina server”, labelled “One server · each person’s own access”.',
+        caption: 'Product site (fictional demo company): Mina, Alex and Sam on one Trina server, each with their own access.' },
+      { file: '03-app-onboarding.webp', full: '03-app-onboarding-full.webp', width: 1600, height: 1000,
+        alt: 'The Trina AX app in dark mode: a welcome checklist with “Connect your tools” (Google Drive connected; Gmail, Google Calendar and Notion with Connect buttons), say hi to the team, ask Trina what you can do here, add your photo and open the desktop app.',
+        caption: 'Real app (QA team, names masked): the welcome checklist. Each person connects Google Drive, Gmail, Calendar or Notion with their own account.' },
+    ],
+  },
+  {
+    note: 'part two: skills and files',
+    title: 'Team skills and shared files.',
+    paragraphs: [
+      'The team lead writes how work is done once, as a SKILL.md (e.g. “Customer quote: PDF from the price sheet”); everyone’s AI follows it with /quote.',
+      'One shared drive: company-wide, groups, projects, personal. Every change is versioned; a nightly job summarises every file so it’s found by content.',
+    ],
+    shots: [
+      { file: '04-app-team-skills.webp', full: '04-app-team-skills-full.webp', width: 1600, height: 1000,
+        alt: 'The Trina AX app’s Team skills page: two skills from the team, /quote (makes a customer quote as a PDF, 24 uses) and /leave-request (fills in the leave request form, 6 uses), plus skills prepared by Trina.',
+        caption: 'Real app (QA team): team skills. /quote has been used 24 times, /leave-request 6 times.' },
+      { file: '05-app-team-files.webp', full: '05-app-team-files-full.webp', width: 1600, height: 1000,
+        alt: 'The Trina AX app’s Files page: team folders Company-wide, Groups, Projects, Team skills and Personal, each with its last-modified date.',
+        caption: 'Real app (QA team): one shared drive with Company-wide, Groups, Projects, Team skills and Personal folders.' },
+    ],
+  },
+  {
+    note: 'part three: access',
+    title: 'Per-person access, checked on every file.',
+    paragraphs: [
+      'Every file request, from a person or their AI, goes through one permission check on the server. If Mina can’t open Finance, neither can her AI.',
+      'The engine runs in a sandbox (bubblewrap, Landlock, seccomp) on Linux.',
+    ],
+    shots: [],
+  },
+  {
+    note: 'part four: together',
+    title: 'Work together with AI.',
+    paragraphs: [
+      'Pick up a teammate’s AI session where they left off (each turn runs with your own access). Ask Trina privately beside any chat, then send the answer to the room in one click.',
+    ],
+    shots: [
+      { file: '06-site-features.webp', full: '06-site-features-full.webp', width: 1600, height: 1000,
+        alt: 'Trina AX product site features: asking Trina privately beside a team room with a “Send to conversation” button; folders shared/Sales, shared/Finance, projects/Food expo and skills, with a “Mina can’t open it” badge on Finance; and Sam picking up Mina’s AI chat.',
+        caption: 'Product site (fictional demo company): ask beside a room and send in one click, per-person folders (“Mina can’t open it”), and picking up a teammate’s AI chat. Covers parts three and four.' },
+    ],
+  },
+];
+
+const problems = [
+  { title: 'No shared context.', text: 'The one person who set things up has the price sheet, the past quotes and the “how we do things here”. A new hire’s AI has none of it, so answers vary wildly from person to person.', color: 'butter' },
+  { title: 'Everyone re-invents the workflow.', text: 'Skills, prompts and tool connections live on individual laptops. Nobody else gets them.', color: 'mint' },
+  { title: 'Sharing is risky.', text: 'Put company files in one place and everyone’s AI can read everything, including Finance and HR.', color: 'blush' },
+  { title: 'Feedback is slow.', text: 'A manager who wants to fix an employee’s AI output has to write feedback and wait.', color: 'lavender' },
+];
+
+const stats = [
+  { value: '445', label: 'GitHub stars', detail: '34 forks since the repo opened in April 2026 · AGPL-3.0, free to self-host', color: 'butter' },
+  { value: '6 + 6', label: 'platforms and languages', detail: 'browser, Mac, Windows, Linux, iPhone, Android · EN, KO, ID, JA, ES, ZH', color: 'mint' },
+  { value: '₩150M', label: 'raised from Partners Lounge', detail: 'per the news banner on ax.trina.app', color: 'lavender' },
+];
+const quotes = [
+  { text: 'Rolled out to ~300 tour guides. Guide complaints down more than 80%, and quote automation finally at the quality they needed.', who: 'travel agency', color: 'blush' },
+  { text: 'A $20,000 AI budget covered by Trina AX. Insurance forms, charts and consultation notes now written with AI.', who: 'medical clinic', color: 'mint' },
+  { text: 'Every consultant performs close to the most experienced one, because everyone’s AI works from the same background.', who: 'consumer retail', color: 'butter' },
+  { text: 'Fixes employees’ AI work by continuing their session instead of writing feedback and waiting.', who: 'Potenlab CEO', color: 'lavender' },
+];
+const stack = ['TypeScript', 'Bun', 'Go', 'Claude Code + Codex engines', 'MCP', 'Linux sandbox (bubblewrap, Landlock, seccomp)', 'Docker', 'Native desktop and mobile apps (Swift, Kotlin)'];
+---
+<BaseLayout title={project.name} description={project.description} active="work">
+  <article class="case-study trina-case section-pad">
+    <a class="ink-link back-link" href={`${base}/work/`}>← Back to selected work</a>
+    <header class="case-header enter">
+      <div>
+        <span class="mono case-client"><img class="client-mark" src={`${base}/${logo.src}`} alt="" width={logo.width} height={logo.height} />✦ File {project.number} / {project.category}</span>
+        <h1 class="hook-title case-hook"><span class="hook-line hook-problem"><span class="hook-label hand">the problem</span>{project.hook!.problem}</span><span class="hook-line hook-solution"><span class="hook-label hand">the fix <span aria-hidden="true">→</span></span>{project.hook!.solution}</span></h1>
+        <p>{project.description}</p>
+        <div class="case-tags">{project.tags.map(tag => <span class="torn butter mono">{tag}</span>)}</div>
+      </div>
+      <dl class="case-facts">
+        <div class="torn lavender"><dt>Type</dt><dd>Company product</dd></div>
+        <div class="torn butter"><dt>Product</dt><dd><a class="case-fact-link" href={project.url} target="_blank" rel="noopener noreferrer">ax.trina.app ↗<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+        <div class="torn mint"><dt>Source</dt><dd><a class="case-fact-link" href="https://github.com/trina-app/trina-ax" target="_blank" rel="noopener noreferrer">GitHub ↗<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+        <div class="torn blush"><dt>Role</dt><dd>Software Engineer Lead, Potenlab</dd></div>
+      </dl>
+    </header>
+
+    <figure class="case-hero case-shot-hero reveal">
+      <a href={img('01-site-hero-full.webp')} target="_blank" rel="noopener"><img src={img('01-site-hero.webp')} width="1600" height="1000" alt="The Trina AX product site at ax.trina.app: “Claude Code and Codex for your whole team”, the headline “The AI your whole team shares.”, buttons to create a team or self-host from GitHub, apps for Mac, Windows, iPhone and Android, and a simplified product window below." /><span class="sr-only"> (open full-size image)</span></a>
+      <figcaption>The product site at ax.trina.app. Below, “real app” screens come from the QA team with names masked; “product site” screens use the site’s fictional demo company.</figcaption>
+    </figure>
+
+    <div class="case-story trina-story">
+      <section class="story-text reveal">
+        <span class="hand">the problem</span>
+        <h2>Everyone’s AI started<br />from an empty folder.</h2>
+        <p>Companies adopt Claude Code or ChatGPT one person at a time. Each person’s AI starts from an empty folder:</p>
+        <ul class="problem-list">
+          {problems.map((item, i) => <li><span class:list={['torn', item.color]}>0{i + 1}</span><p><strong>{item.title}</strong> {item.text}</p></li>)}
+        </ul>
+      </section>
+
+      <span class="hand story-divider reveal">what we built ↓</span>
+
+      {parts.map((part, i) => (
+        <section class="story-part">
+          <div class="story-text reveal">
+            <span class="hand">{part.note}</span>
+            <h2><span class="part-number display">0{i + 1}</span> {part.title}</h2>
+            {part.paragraphs.map(text => <p>{text}</p>)}
+          </div>
+          {part.shots.length > 0 && <div class="shot-row">
+            {part.shots.map(shot => (
+              <figure class:list={['case-shot', 'reveal', { 'case-shot-narrow': shot.narrow }]}>
+                <a href={img(shot.full ?? shot.file)} target="_blank" rel="noopener"><img src={img(shot.file)} width={shot.width} height={shot.height} alt={shot.alt} loading="lazy" /><span class="sr-only"> (open full-size image)</span></a>
+                <figcaption>{shot.caption}</figcaption>
+              </figure>
+            ))}
+          </div>}
+        </section>
+      ))}
+
+      <section class="story-results reveal" aria-labelledby="results-title">
+        <span class="hand">the result</span>
+        <h2 id="results-title">Open source, on every platform.</h2>
+        <ul class="stat-grid">
+          {stats.map(stat => <li class:list={['stat-note', stat.color]}><span class="stat-value display">{stat.value}</span><span class="stat-label">{stat.label}</span><span class="stat-detail mono">{stat.detail}</span></li>)}
+        </ul>
+        <span class="hand results-subhead">what customers say</span>
+        <h2>From customer quotes on ax.trina.app.</h2>
+        <ul class="stat-grid quote-grid">
+          {quotes.map(quote => <li class:list={['stat-note', 'quote-note', quote.color]}><span class="stat-label">{quote.text}</span><span class="stat-detail mono">— {quote.who}</span></li>)}
+        </ul>
+      </section>
+
+      <section class="story-text reveal">
+        <span class="hand">built with</span>
+        <div class="case-tags stack-tags">{stack.map((tool, i) => <span class:list={['torn', ['butter', 'mint', 'lavender', 'blush'][i % 4]]}>{tool}</span>)}</div>
+        <span class="hand role-note">my role</span>
+        <p>Company product at Potenlab, where I’m Software Engineer Lead.</p>
+      </section>
+    </div>
+
+    <a class="next-project" href={`${base}/work/${next.slug}/`}><span class="hand">next file →</span><span class="display">{next.name}</span><span aria-hidden="true">↗</span></a>
+  </article>
+</BaseLayout>
