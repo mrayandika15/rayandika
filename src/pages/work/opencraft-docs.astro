@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {projects, nextProject} from '../../content/projects';
+const project = projects.find(item => item.slug === 'opencraft-docs')!;
+const next = nextProject(project.slug);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const img = (name: string) => `${base}/images/opencraft-docs/${name}`;
+const logo = project.logo!;
+
+interface Shot { file: string; full?: string; width: number; height: number; alt: string; caption: string; narrow?: boolean; }
+const parts: {title: string; note: string; paragraphs: string[]; sources?: string[]; shots: Shot[]}[] = [
+  {
+    note: 'part one: ask in chat',
+    title: 'Ask in chat with a skill.',
+    paragraphs: [
+      'An internal chat (Claude on OpenCraft’s own server) with team skills. Type /opencraft-document, describe the client and the services, and the agent takes it from there.',
+      'Skills are edited on a Skills page and reach the agent within 30 seconds.',
+    ],
+    shots: [
+      { file: '01-chat-skill.webp', full: '01-chat-skill-full.webp', width: 1600, height: 1000,
+        alt: 'OpenCraft’s internal chat: a new chat titled “Mulai dari mana?” with the “Dokumen OpenCraft” skill picked and the prompt “Tulis permintaan untuk Dokumen OpenCraft…”.',
+        caption: 'The chat with the “Dokumen OpenCraft” skill picked. “Mulai dari mana?” = where do we start?; the box asks for the document request.' },
+      { file: '02-skill.webp', full: '02-skill-full.webp', width: 1600, height: 1000,
+        alt: 'The Skills page: one skill, Dokumen OpenCraft, /opencraft-document, described as making or revising OpenCraft business documents: SPH, MoU and presentation decks, switched on.',
+        caption: 'The Skills page: /opencraft-document makes or revises OpenCraft’s SPH (price offer), MoU and deck. Type /name in chat to use a skill.' },
+    ],
+  },
+  {
+    note: 'part two: the RAG part',
+    title: 'Retrieval before writing.',
+    paragraphs: [
+      'Before writing a word, the agent retrieves OpenCraft’s own sources:',
+    ],
+    sources: [
+      'The authoritative price list (exact SKU and price).',
+      'The company profile and brand guidelines.',
+      'The document-number register (next free number).',
+      'The right template and samples.',
+    ],
+    shots: [],
+  },
+  {
+    note: 'part three: filed automatically',
+    title: 'A real document, filed automatically.',
+    paragraphs: [
+      'It renders a branded PDF (react-pdf) and records the number, and a worker uploads it to Google Drive into the SPH / MoU / Deck folder.',
+      'The Document page is a two-way synced Drive view where the team previews and downloads it.',
+    ],
+    shots: [
+      { file: '03-drive-sph.webp', full: '03-drive-sph-full.webp', width: 1600, height: 1000,
+        alt: 'The Document page in the SPH folder: three generated price-offer PDFs dated 23 Nov 2026, marked “Tersinkron dengan Google Drive · baru saja”, with buttons to sync now and open in Google Drive.',
+        caption: 'The Document page, SPH folder: three generated SPH PDFs, synced with Google Drive (“Tersinkron dengan Google Drive” = synced with Google Drive, “Penawaran Harga” = price offer).' },
+    ],
+  },
+];
+
+const problems = [
+  { title: 'Copy-paste from old documents.', text: 'Each SPH started from the last one, so old prices, old client names and old wording leaked through.', color: 'butter' },
+  { title: 'Prices drifted.', text: 'The price for the same service could differ between two offers, because nobody checked a single source.', color: 'mint' },
+  { title: 'Numbering broke.', text: 'Document numbers (001/SPH-OC/2026) were typed by hand, so they got skipped or duplicated.', color: 'blush' },
+  { title: 'Files scattered.', text: 'Finished PDFs lived in downloads folders and chats instead of one place the team could find.', color: 'lavender' },
+];
+
+const stats = [
+  { value: '1', label: 'chat message to a numbered, branded 3-page PDF', detail: 'filed in the team’s Google Drive', color: 'butter' },
+  { value: '3', label: 'SPHs generated so far', detail: 'AI workflow & knowledge base, POS app, receipt & invoice system · all filed and numbered in sequence', color: 'mint' },
+  { value: '3 types', label: 'SPH, MoU and pitch deck, handled by the same agent', detail: 'decks get a draft → approve → polish step before paying for AI images', color: 'lavender' },
+];
+const stack = ['Next.js 15', 'React 19', 'TypeScript', 'MUI', 'Supabase (Postgres, Auth, Realtime)', 'Claude Code on a self-hosted worker', 'Google Drive API', 'react-pdf', 'Bun', 'Python'];
+---
+<BaseLayout title={project.name} description={project.description} active="work">
+  <article class="case-study opencraft-case section-pad">
+    <a class="ink-link back-link" href={`${base}/work/`}>← Back to selected work</a>
+    <header class="case-header enter">
+      <div>
+        <span class="mono case-client"><img class="client-mark" src={`${base}/${logo.src}`} alt="" width={logo.width} height={logo.height} />✦ File {project.number} / {project.category}</span>
+        <h1 class="hook-title case-hook"><span class="hook-line hook-problem"><span class="hook-label hand">the problem</span>{project.hook!.problem}</span><span class="hook-line hook-solution"><span class="hook-label hand">the fix <span aria-hidden="true">→</span></span>{project.hook!.solution}</span></h1>
+        <p>{project.description}</p>
+        <div class="case-tags">{project.tags.map(tag => <span class="torn butter mono">{tag}</span>)}</div>
+      </div>
+      <dl class="case-facts">
+        <div class="torn lavender"><dt>Type</dt><dd>Internal tool</dd></div>
+        <div class="torn butter"><dt>Company</dt><dd>OpenCraft</dd></div>
+        <div class="torn mint"><dt>Focus</dt><dd>RAG · document automation</dd></div>
+        <div class="torn blush"><dt>Role</dt><dd>Designed and built end to end</dd></div>
+      </dl>
+    </header>
+
+    <figure class="case-hero sph-hero reveal">
+      <div class="sph-pages">
+        <a href={img('04-sph-page1-full.webp')} target="_blank" rel="noopener"><img src={img('04-sph-page1.webp')} width="1076" height="1520" alt="Page 1 of the generated price offer: dated Bandung, 30 Mei 2026, No 001/SPH-OC/2026, Hal: Penawaran Harga Jasa AI Workflow Automation & Knowledge Base, a short letter introducing OpenCraft, and the Basic price table (AI Workflow Automation, AI Integration into Existing Systems, Total) with prices blurred." /><span class="sr-only"> (open full-size image)</span></a>
+        <a href={img('05-sph-page2-full.webp')} target="_blank" rel="noopener"><img src={img('05-sph-page2.webp')} width="1076" height="1520" alt="Page 2 of the generated price offer: the Standard and Premium price tables (AI Workflow Automation, RAG / Knowledge Base Implementation, AI Agent Development) and an optional add-on table (AI Observability & Monitoring Setup, AI Training Workshop for Team), with prices blurred." /><span class="sr-only"> (open full-size image)</span></a>
+      </div>
+      <figcaption>The result first: pages 1 and 2 of SPH 001/SPH-OC/2026, “AI Workflow Automation & Knowledge Base”, as the agent wrote it. Prices, the client name and the footer contact details are blurred.</figcaption>
+    </figure>
+
+    <div class="case-story opencraft-story">
+      <section class="story-text reveal">
+        <span class="hand">the problem</span>
+        <h2>Every quote rebuilt<br />by hand.</h2>
+        <p>OpenCraft sends price offers (SPH, “Surat Pengajuan Harga”) and MoUs to every new client. Done by hand:</p>
+        <ul class="problem-list">
+          {problems.map((item, i) => <li><span class:list={['torn', item.color]}>0{i + 1}</span><p><strong>{item.title}</strong> {item.text}</p></li>)}
+        </ul>
+      </section>
+
+      <span class="hand story-divider reveal">what I built ↓</span>
+
+      {parts.map((part, i) => (
+        <section class="story-part">
+          <div class="story-text reveal">
+            <span class="hand">{part.note}</span>
+            <h2><span class="part-number display">0{i + 1}</span> {part.title}</h2>
+            {part.paragraphs.map(text => <p>{text}</p>)}
+            {part.sources && <ul class="source-list">{part.sources.map((source, j) => <li><span class:list={['torn', ['butter', 'mint', 'lavender', 'blush'][j % 4]]} aria-hidden="true">✦</span><p>{source}</p></li>)}</ul>}
+            {part.sources && <p><strong>Hard rules:</strong> never invent a price (if an item isn’t in the price list, it asks), never invent a document number, never hardcode company info.</p>}
+          </div>
+          {part.shots.length > 0 && <div class="shot-row">
+            {part.shots.map(shot => (
+              <figure class:list={['case-shot', 'reveal', { 'case-shot-narrow': shot.narrow }]}>
+                <a href={img(shot.full ?? shot.file)} target="_blank" rel="noopener"><img src={img(shot.file)} width={shot.width} height={shot.height} alt={shot.alt} loading="lazy" /><span class="sr-only"> (open full-size image)</span></a>
+                <figcaption>{shot.caption}</figcaption>
+              </figure>
+            ))}
+          </div>}
+        </section>
+      ))}
+
+      <section class="story-results reveal" aria-labelledby="results-title">
+        <span class="hand">the result</span>
+        <h2 id="results-title">From one chat message to a filed PDF.</h2>
+        <ul class="stat-grid">
+          {stats.map(stat => <li class:list={['stat-note', stat.color]}><span class="stat-value display">{stat.value}</span><span class="stat-label">{stat.label}</span><span class="stat-detail mono">{stat.detail}</span></li>)}
+        </ul>
+        <p class="results-note">Example output: SPH 001/SPH-OC/2026, “AI Workflow Automation &amp; Knowledge Base”: 3 solution tiers (Basic, Standard, Premium) plus add-ons and a maintenance retainer, every line priced from the price list.</p>
+      </section>
+
+      <section class="story-text reveal">
+        <span class="hand">built with</span>
+        <div class="case-tags stack-tags">{stack.map((tool, i) => <span class:list={['torn', ['butter', 'mint', 'lavender', 'blush'][i % 4]]}>{tool}</span>)}</div>
+        <span class="hand role-note">my role</span>
+        <p>Designed and built end to end for my own company, OpenCraft.</p>
+      </section>
+    </div>
+
+    <a class="next-project" href={`${base}/work/${next.slug}/`}><span class="hand">next file →</span><span class="display">{next.name}</span><span aria-hidden="true">↗</span></a>
+  </article>
+</BaseLayout>

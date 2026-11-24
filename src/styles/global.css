@@ -188,7 +188,7 @@
   }
 }
 
-/* Client and company case studies (Kiyoo, Trina AX): real screenshots in the card frame and on the case page. */
+/* Client, company and internal case studies (Kiyoo, Trina AX, OpenCraft docs): real screenshots in the card frame and on the case page. */
 @layer artwork {
   .art-shot { background: #3a2f38; background-image: radial-gradient(ellipse at 40% 35%,#c4708f55,transparent 75%); }
   .shot-window { position: absolute; inset: 9% 6% 0; display: flex; flex-direction: column; background: #faf6f8; border: 1px solid #ffffff3d; border-bottom: 0; border-radius: 7px 7px 0 0; transform: rotate(-1.5deg) translateY(3%); box-shadow: 10px 19px 25px #120d108a; overflow: hidden; }
@@ -235,6 +235,7 @@
   .case-fact-link:hover { color: var(--blue); }
   .work-file-3 { background: var(--pink); }
   .work-file-4 { background: var(--green); color: var(--paper); }
+  .work-file-5 { background: var(--lavender); color: var(--ink); }
   .quote-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .quote-note .stat-label { font-size: 20px; }
   .case-story .results-subhead { margin-top: 64px; }
@@ -304,5 +305,23 @@
     .project-picture:has(.client-sticker) { width: 92%; justify-self: center; margin: 4px auto 0; transform: rotate(-2deg); }
     .folder-body:has(.client-sticker) { padding-bottom: 46px; }
     .project-picture .client-sticker { width: 66px; left: -12px; bottom: 2px; }
+  }
+}
+
+/* OpenCraft docs: the generated SPH pages side by side as the case hero (portrait, not cropped) */
+@layer responsive {
+  .case-hero.sph-hero { background: #e7e3d4; padding: 34px 30px 16px; }
+  .sph-hero .sph-pages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; max-width: 980px; margin-inline: auto; }
+  .sph-pages a { display: block; cursor: zoom-in; border: 1px solid #c2c2b6; padding: 8px; background: var(--paper); box-shadow: 4px 6px 0 #11140a14; transform: rotate(-.8deg); }
+  .sph-pages a:nth-child(even) { transform: rotate(.8deg) translateY(14px); }
+  .sph-pages img { width: 100%; height: auto; }
+  .sph-hero figcaption { margin-top: 26px; }
+  .source-list { list-style: none; padding: 0; margin: 20px 0 22px; display: grid; gap: 12px; }
+  .source-list li { display: flex; align-items: center; gap: 14px; }
+  .source-list li > span { font-size: 14px; padding: 4px 9px; flex-shrink: 0; }
+  @media (max-width: 620px) {
+    .case-hero.sph-hero { padding: 18px 14px 10px; }
+    .sph-hero .sph-pages { grid-template-columns: 1fr; gap: 20px; max-width: 440px; }
+    .sph-pages a, .sph-pages a:nth-child(even) { transform: none; padding: 5px; }
   }
 }
