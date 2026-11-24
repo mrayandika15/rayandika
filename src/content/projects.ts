@@ -91,14 +91,14 @@ export const projects: Project[] = [
   },
   {
     number: '04', slug: 'landing-pages', category: 'Landing pages · 2 brands', name: 'Landing pages, 2 brands', fileLabel: 'LANDING PAGES',
-    description: 'ZELKA Labs now reaches page one of Google (average position 7.3, 6.4% CTR). YVYLORA got a premium brand page that turns marketplace shoppers into believers.',
+    description: 'ZELKA Labs went from invisible to page one of Google (average position 7.3). YVYLORA got a premium brand page. Both score 98 on Google PageSpeed and load in under a second.',
     hook: {
-      problem: 'A new game studio nobody could find on Google, and a hair-care brand that looked like every other shop.',
-      solution: 'Two landing pages: one built to be found, one built to sell.',
+      problem: 'A game studio nobody could find on Google, and a premium hair cream that looked like every other shop.',
+      solution: 'Two fast landing pages: one built to be found, one built to sell.',
     },
     logo: { src: 'images/landing-pages/zelka-mark.svg', alt: 'ZELKA Labs logo mark', width: 32, height: 32 },
     logo2: { src: 'images/landing-pages/yvylora-mark.svg', alt: 'YVYLORA logo mark', width: 64, height: 64 },
-    tags: ['SEO', 'Google Search Console', 'Structured data', 'Landing-page design'],
+    tags: ['SEO', 'Web performance', 'Google Search Console', 'Landing-page design'],
     url: 'https://zelkalabs.id',
     // `client` marks a hand-written case page (src/pages/work/landing-pages.astro).
     visual: 'shot', color: 'pink', client: true,
@@ -113,7 +113,7 @@ export const projects: Project[] = [
       label: 'yvylora.com',
     },
     idea: 'Two landing pages, two problems: an indie game studio that couldn’t be found on Google, and a hair-care brand that looked like every marketplace shop.',
-    focus: ['ZELKA Labs: built to be found on Google.', 'YVYLORA: a premium brand page built to sell.'],
+    focus: ['ZELKA Labs: built to be found on Google.', 'YVYLORA: a premium brand page built to sell.', 'Both: under a second, PageSpeed 98.'],
   },
   {
     number: '05', slug: 'harness-agent-canvas', category: 'Agent tooling', name: 'Harness Agent Canvas',
