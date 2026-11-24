@@ -33,7 +33,7 @@ The production output is static HTML, CSS, JavaScript, fonts, and images in `dis
 | Playground | `/playground/` |
 | Contact | `/contact/` |
 
-Three project detail pages are generated from the project data. Navigation links and assets include the configured repository prefix.
+Personal project pages are generated from the project data; the Kiyoo.id client case study has its own page (`src/pages/work/kiyoo.astro`). Navigation links and assets include the configured repository prefix.
 
 ## Edit content
 
@@ -52,7 +52,7 @@ The display name is **mrayandika**; the full identity is Muhammad Rayandika; Git
 
 No public email was supplied. Contact actions use GitHub until an email is added to `profile.ts`. Adding one enables the email action and copy-email button. Clipboard support is progressively enhanced with success and failure feedback.
 
-Project graphics are concept illustrations, not screenshots. The public repositories are linked so visitors can inspect the actual implementations. Project pages intentionally avoid unverified metrics and client claims.
+Personal project graphics are concept illustrations, not screenshots; their public repositories are linked so visitors can inspect the actual implementations. The Kiyoo.id case study uses real admin screenshots (names masked) stored as WebP in `public/images/kiyoo/`, and only numbers confirmed by the client.
 
 ## Images and fonts
 
