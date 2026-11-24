@@ -19,7 +19,7 @@ const recent = recentWork.map(item => ({ ...item, name: projects.find(project =>
         <li><a class="ink-link" href={`${base}/work/`}>All selected work ↗</a></li>
       </ul>
       <ul class="not-found-work">
-        {recent.map((item, i) => <li><a href={`${base}/work/${item.slug}/`}><span class:list={['torn mono', ['blush', 'mint', 'lavender'][i]]}>{item.name}</span> {item.label}</a></li>)}
+        {recent.map((item, i) => <li><a href={`${base}/work/${item.slug}/`}><span class:list={['torn mono', ['blush', 'mint', 'lavender', 'butter'][i % 4]]}>{item.name}</span> {item.label}</a></li>)}
       </ul>
     </div>
   </section>

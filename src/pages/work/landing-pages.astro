@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {projects, nextProject} from '../../content/projects';
+const project = projects.find(item => item.slug === 'landing-pages')!;
+const next = nextProject(project.slug);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const img = (name: string) => `${base}/images/landing-pages/${name}`;
+const zelkaLogo = project.logo!;
+const yvyloraLogo = project.logo2!;
+
+interface Shot { file: string; full: string; width: number; height: number; alt: string; caption: string; }
+
+const zelkaDid = [
+  'One clear page title and meta description per page that says what the studio is (“An indie mobile & PC game studio from Indonesia”) and names the games.',
+  'Technical basics search engines need: canonical URLs, lang, robots.txt and sitemap.xml, descriptive alt text on every image (11 of 11), real headings.',
+  'Fresh, indexable content: a news / devlog section (releases, updates, sales) so Google has new pages to crawl, plus direct links to the official Google Play and itch.io pages.',
+];
+
+const yvyloraDid = [
+  'An editorial, luxury look: large serif headline (“Best Protein Keratin Product.”), soft pink palette, an animated hero with the product on a pedestal.',
+  'A page that sells in order: what it is → trust (BPOM registration, Halal, ISO 22716 / CPKB manufacturer) → reviews (5.0 on Shopee & Tokopedia) → the product card (promo price, 3 functions) → 8 key ingredients → FAQ → buy on the official stores.',
+  'Search and sharing done properly too: Product, Offer, AggregateRating, FAQPage, Organization and WebSite structured data, a share image, and a sitemap.',
+];
+
+const stats = [
+  { value: '328', label: 'impressions', detail: 'times ZELKA Labs showed up in Google search', color: 'lavender' },
+  { value: '21', label: 'clicks', detail: 'visits from Google search', color: 'butter' },
+  { value: '6.4%', label: 'CTR', detail: 'of people who saw it, clicked', color: 'mint' },
+  { value: '7.3', label: 'average position', detail: 'first page of Google', color: 'blush' },
+];
+
+const searchConsole: Shot = {
+  file: '02-zelka-search-console.webp', full: '02-zelka-search-console-full.webp', width: 1713, height: 956,
+  alt: 'Google Search Console performance report for ZELKA Labs, last 3 months: 21 total clicks, 328 total impressions, 6.4% average CTR, average position 7.3, with a daily chart from 23 Aug to 21 Nov 2026.',
+  caption: 'Google Search Console, last 3 months (23 Aug – 21 Nov 2026). The UI is in Indonesian: “Total klik” = total clicks, “Total tayangan” = impressions, “CTR rata-rata” = average CTR, “Posisi rata-rata” = average position, “3 bulan” = 3 months.',
+};
+
+const yvyloraShots: Shot[] = [
+  { file: '03-yvylora-hero.webp', full: '03-yvylora-hero-full.webp', width: 1600, height: 1049,
+    alt: 'YVYLORA hero: a large serif headline, “Best Protein Keratin Product.”, a short product description and the Protein Luxe Cream on a pedestal in a soft pink scene.',
+    caption: 'The hero: a large serif headline, a soft pink palette and the product on a pedestal.' },
+  { file: '04-yvylora-product.webp', full: '04-yvylora-product-full.webp', width: 1600, height: 1049,
+    alt: 'YVYLORA product section: “Satu cream, 3 fungsi” with four benefit icons, then the Protein Luxe Cream product card with a 5.0 rating and a promo price.',
+    caption: '“Satu cream, 3 fungsi” = one cream, 3 functions: the benefits, then the product card with its 5.0 rating and promo price.' },
+];
+
+const stack = ['SEO', 'Google Search Console', 'Structured data', 'Landing-page design'];
+---
+<BaseLayout title={project.name} description={project.description} active="work" ogImage={{ src: 'images/og/landing-pages.jpg', width: 1200, height: 630, alt: 'The ZELKA Labs and YVYLORA landing pages side by side.' }}>
+  <article class="case-study landing-case section-pad">
+    <a class="ink-link back-link" href={`${base}/work/`}>← Back to selected work</a>
+    <header class="case-header enter">
+      <div>
+        <span class="mono case-client"><img class="client-mark" src={`${base}/${zelkaLogo.src}`} alt="" width={zelkaLogo.width} height={zelkaLogo.height} /><img class="client-mark" src={`${base}/${yvyloraLogo.src}`} alt="" width={yvyloraLogo.width} height={yvyloraLogo.height} />✦ File {project.number} / {project.category}</span>
+        <h1 class="hook-title case-hook"><span class="hook-line hook-problem"><span class="hook-label hand">the problem</span>{project.hook!.problem}</span><span class="hook-line hook-solution"><span class="hook-label hand">the fix <span aria-hidden="true">→</span></span>{project.hook!.solution}</span></h1>
+        <p>{project.description}</p>
+        <div class="case-tags">{project.tags.map(tag => <span class="torn butter mono">{tag}</span>)}</div>
+      </div>
+      <dl class="case-facts">
+        <div class="torn lavender"><dt>Type</dt><dd>Landing pages</dd></div>
+        <div class="torn butter"><dt>Sites</dt><dd><a class="case-fact-link" href="https://zelkalabs.id" target="_blank" rel="noopener noreferrer">zelkalabs.id ↗<span class="sr-only"> (opens in a new tab)</span></a> / <a class="case-fact-link" href="https://yvylora.com" target="_blank" rel="noopener noreferrer">yvylora.com ↗<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+        <div class="torn mint"><dt>Focus</dt><dd>SEO · Brand design</dd></div>
+        <div class="torn blush"><dt>Role</dt><dd>Designed and built</dd></div>
+      </dl>
+    </header>
+
+    <figure class="case-hero sites-hero reveal">
+      <div class="site-pair">
+        <a href={img('01-zelka-hero-full.webp')} target="_blank" rel="noopener"><img src={img('01-zelka-hero.webp')} width="1600" height="1036" alt="ZELKA Labs home page: the Museum Aksara Jiwa hero, “Survive the night shift in a haunting Indonesian museum.”, above a strip reading “An independent game studio from Indonesia crafting playful mobile and PC games in Unity”." /><span class="sr-only"> (open full-size image)</span></a>
+        <a href={img('03-yvylora-hero-full.webp')} target="_blank" rel="noopener"><img src={img('03-yvylora-hero.webp')} width="1600" height="1049" alt="YVYLORA home page: “Best Protein Keratin Product.” in a large serif, with the Protein Luxe Cream on a pedestal in a soft pink scene." /><span class="sr-only"> (open full-size image)</span></a>
+      </div>
+      <figcaption>One case, two sites, two problems: ZELKA Labs (left) had to be found on Google; YVYLORA (right) had to look premium.</figcaption>
+    </figure>
+
+    <div class="case-story landing-story">
+      <section class="site-section" aria-labelledby="zelka-title">
+        <div class="story-text reveal">
+          <div class="site-head"><img class="site-mark" src={`${base}/${zelkaLogo.src}`} alt="" width="40" height="40" /><span class="hand">site 1 · ZELKA Labs · the problem was Google SEO</span></div>
+          <h2 id="zelka-title">A game studio nobody<br />could find on Google.</h2>
+          <p>ZELKA Labs is an indie game studio from Indonesia (Unity, mobile and PC). Its games live on Google Play and itch.io, but the studio itself didn’t show up when people searched for it or its games. Without search traffic, every visitor had to come from social posts.</p>
+          <span class="hand role-note">what I did</span>
+          <ul class="source-list">{zelkaDid.map((item, i) => <li><span class:list={['torn', ['butter', 'mint', 'lavender'][i]]} aria-hidden="true">✦</span><p>{item}</p></li>)}</ul>
+          <a class="ink-link site-link" href="https://zelkalabs.id" target="_blank" rel="noopener noreferrer">Visit zelkalabs.id ↗<span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
+
+        <div class="story-results reveal">
+          <span class="hand">the result</span>
+          <h3 class="sr-only">Google Search Console, last 3 months</h3>
+          <ul class="stat-grid gsc-stats">
+            {stats.map(stat => <li class:list={['stat-note', stat.color]}><span class="stat-value display">{stat.value}</span><span class="stat-label">{stat.label}</span><span class="stat-detail mono">{stat.detail}</span></li>)}
+          </ul>
+          <p class="results-note">Google Search Console, last 3 months (23 Aug – 21 Nov 2026): page one of Google.</p>
+        </div>
+        <div class="shot-row">
+          <figure class="case-shot reveal">
+            <a href={img(searchConsole.full)} target="_blank" rel="noopener"><img src={img(searchConsole.file)} width={searchConsole.width} height={searchConsole.height} alt={searchConsole.alt} loading="lazy" /><span class="sr-only"> (open full-size image)</span></a>
+            <figcaption>{searchConsole.caption}</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="site-section" aria-labelledby="yvylora-title">
+        <div class="story-text reveal">
+          <div class="site-head"><img class="site-mark" src={`${base}/${yvyloraLogo.src}`} alt="" width="40" height="40" /><span class="hand">site 2 · YVYLORA · the problem was design</span></div>
+          <h2 id="yvylora-title">A premium cream that<br />looked like every other shop.</h2>
+          <p>YVYLORA sells a 3-in-1 protein hair cream on Shopee, Tokopedia and TikTok Shop. Marketplace pages all look the same, so the brand couldn’t show it’s premium, couldn’t explain why one cream does three jobs, and couldn’t show its credentials.</p>
+          <span class="hand role-note">what I did</span>
+          <ul class="source-list">{yvyloraDid.map((item, i) => <li><span class:list={['torn', ['blush', 'lavender', 'butter'][i]]} aria-hidden="true">✦</span><p>{item}</p></li>)}</ul>
+          <p><strong>The result:</strong> a premium brand page at yvylora.com that every marketplace listing and social post can point to, with one-click links to the official Shopee, Tokopedia and TikTok Shop stores.</p>
+          <a class="ink-link site-link" href="https://yvylora.com" target="_blank" rel="noopener noreferrer">Visit yvylora.com ↗<span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
+        <div class="shot-row">
+          {yvyloraShots.map(shot => (
+            <figure class="case-shot reveal">
+              <a href={img(shot.full)} target="_blank" rel="noopener"><img src={img(shot.file)} width={shot.width} height={shot.height} alt={shot.alt} loading="lazy" /><span class="sr-only"> (open full-size image)</span></a>
+              <figcaption>{shot.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section class="story-text reveal site-section">
+        <span class="hand">built with</span>
+        <div class="case-tags stack-tags">{stack.map((tool, i) => <span class:list={['torn', ['butter', 'mint', 'lavender', 'blush'][i % 4]]}>{tool}</span>)}</div>
+        <span class="hand role-note">my role</span>
+        <p>Designed and built both landing pages.</p>
+      </section>
+    </div>
+
+    <a class="next-project" href={`${base}/work/${next.slug}/`}><span class="hand">next file →</span><span class="display">{next.name}</span><span aria-hidden="true">↗</span></a>
+  </article>
+</BaseLayout>

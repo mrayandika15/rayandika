@@ -22,6 +22,9 @@ export interface Project {
   hook?: { problem: string; solution: string };
   /** Client brand mark, taped onto the card picture as a sticker. */
   logo?: { src: string; alt: string; width: number; height: number };
+  /** Second site for a two-site case: a smaller screenshot window overlapping the first, and a second sticker. */
+  shot2?: { src: string; alt: string; label: string };
+  logo2?: { src: string; alt: string; width: number; height: number };
 }
 
 // Personal projects link to public repositories and use concept illustrations.
@@ -85,7 +88,33 @@ export const projects: Project[] = [
     focus: ['Ask in chat with a skill.', 'Retrieval before writing.', 'A real document, filed automatically.'],
   },
   {
-    number: '04', slug: 'harness-agent-canvas', category: 'Agent tooling', name: 'Harness Agent Canvas',
+    number: '04', slug: 'landing-pages', category: 'Landing pages · 2 brands', name: 'Landing pages, 2 brands',
+    description: 'ZELKA Labs now reaches page one of Google (average position 7.3, 6.4% CTR). YVYLORA got a premium brand page that turns marketplace shoppers into believers.',
+    hook: {
+      problem: 'A new game studio nobody could find on Google, and a hair-care brand that looked like every other shop.',
+      solution: 'Two landing pages: one built to be found, one built to sell.',
+    },
+    logo: { src: 'images/landing-pages/zelka-mark.svg', alt: 'ZELKA Labs logo mark', width: 32, height: 32 },
+    logo2: { src: 'images/landing-pages/yvylora-mark.svg', alt: 'YVYLORA logo mark', width: 64, height: 64 },
+    tags: ['SEO', 'Google Search Console', 'Structured data', 'Landing-page design'],
+    url: 'https://zelkalabs.id',
+    // `client` marks a hand-written case page (src/pages/work/landing-pages.astro).
+    visual: 'shot', color: 'pink', client: true,
+    shot: {
+      src: 'images/landing-pages/01-zelka-hero.webp',
+      alt: 'ZELKA Labs home page: the Museum Aksara Jiwa hero, “Survive the night shift in a haunting Indonesian museum.”',
+      label: 'zelkalabs.id',
+    },
+    shot2: {
+      src: 'images/landing-pages/03-yvylora-hero.webp',
+      alt: 'YVYLORA home page: “Best Protein Keratin Product.” with the cream on a pedestal.',
+      label: 'yvylora.com',
+    },
+    idea: 'Two landing pages, two problems: an indie game studio that couldn’t be found on Google, and a hair-care brand that looked like every marketplace shop.',
+    focus: ['ZELKA Labs: built to be found on Google.', 'YVYLORA: a premium brand page built to sell.'],
+  },
+  {
+    number: '05', slug: 'harness-agent-canvas', category: 'Agent tooling', name: 'Harness Agent Canvas',
     description: 'An exploration of visual tooling for agent workflows. Bringing the pieces of an AI system into one canvas.',
     tags: ['Next.js', 'TypeScript', 'React Flow'],
     url: 'https://github.com/mrayandika15/harness-agent-canvas',
@@ -94,7 +123,7 @@ export const projects: Project[] = [
     focus: ['A visual workspace for an agent’s skills and connections.', 'Separate places for agent settings, integrations, and conversations.', 'A Next.js interface with React Flow for the canvas.'],
   },
   {
-    number: '05', slug: 'korean-halal-map', category: 'Location & discovery', name: 'Korean Halal Map',
+    number: '06', slug: 'korean-halal-map', category: 'Location & discovery', name: 'Korean Halal Map',
     description: 'A map-based web project exploring halal discovery in Korea. A practical idea, built around finding your way.',
     tags: ['TypeScript', 'Next.js', 'Maps'],
     url: 'https://github.com/mrayandika15/korean-halal-map',
@@ -103,7 +132,7 @@ export const projects: Project[] = [
     focus: ['Location discovery as the central interface.', 'A web experience built with Next.js and TypeScript.', 'A practical exploration of a specific everyday need.'],
   },
   {
-    number: '06', slug: 'a-little-less-to-do', category: 'Everyday productivity', name: 'A little less to-do.',
+    number: '07', slug: 'a-little-less-to-do', category: 'Everyday productivity', name: 'A little less to-do.',
     description: 'A task-list application built with Next.js and TypeScript. An exercise in making everyday interactions feel straightforward.',
     tags: ['Next.js', 'TypeScript', 'UI development'],
     url: 'https://github.com/mrayandika15/todo-list-knitto',

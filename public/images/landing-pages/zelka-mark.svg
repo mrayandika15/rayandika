@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="steam" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#7a4f2c"/>
+      <stop offset="1" stop-color="#e6bd82"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="#211a16"/>
+  <path d="M16 20 C 12.6 17, 19.4 14, 16 11 C 13.2 8.6, 18.5 6, 16 3.6" fill="none" stroke="url(#steam)" stroke-width="2.3" stroke-linecap="round"/>
+  <line x1="6.5" y1="21" x2="25.5" y2="21" stroke="#ecdfc7" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M8 21 A8 8 0 0 0 24 21 Z" fill="#b07a48"/>
+</svg>
