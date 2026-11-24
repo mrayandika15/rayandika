@@ -14,14 +14,23 @@ export interface Project {
   client?: boolean;
   /** Real screenshot shown in the card frame (used when visual is 'shot'). */
   shot?: { src: string; alt: string; label: string };
+  /** Problem → solution headline shown instead of the name on cards and the case-study header. */
+  hook?: { problem: string; solution: string };
+  /** Client brand mark, taped onto the card picture as a sticker. */
+  logo?: { src: string; alt: string };
 }
 
 // Personal projects link to public repositories and use concept illustrations.
 // Client projects use real screenshots and have a dedicated case-study page.
 export const projects: Project[] = [
   {
-    number: '01', slug: 'kiyoo', category: 'AI agents · E-commerce ops', name: 'Kiyoo.id',
-    description: 'An AI-powered back office for an online shop: payments logged from email, real ROAS on Shopee, and tailor production tracked daily.',
+    number: '01', slug: 'kiyoo', category: 'Client: Kiyoo.id · online shop', name: 'Kiyoo.id',
+    description: 'Bank emails, Shopee orders and tailor logs, turned into one AI-powered back office. Net ROAS 4.82 across 1,083 orders.',
+    hook: {
+      problem: 'Shopee ads looked profitable. Nobody could prove it.',
+      solution: 'AI agents now track real profit on every order.',
+    },
+    logo: { src: 'images/kiyoo/kiyoo-mascot.webp', alt: 'Kiyoo’s koala mascot' },
     tags: ['Next.js', 'Supabase', 'Gmail API', 'Cloudinary'],
     url: 'https://kiyoo.id',
     visual: 'shot', color: 'pink', client: true,

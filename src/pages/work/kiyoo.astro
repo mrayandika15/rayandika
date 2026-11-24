@@ -75,15 +75,15 @@ const stack = ['Next.js', 'Supabase (Postgres)', 'Gmail API', 'Cloudinary', 'AI 
     <a class="ink-link back-link" href={`${base}/work/`}>← Back to selected work</a>
     <header class="case-header enter">
       <div>
-        <span class="mono">✦ File {project.number} / {project.category}</span>
-        <h1 class="display">{project.name}</h1>
+        <span class="mono case-client"><img class="client-mark" src={`${base}/${project.logo!.src}`} alt="" width="501" height="520" />✦ File {project.number} / {project.category}</span>
+        <h1 class="hook-title case-hook"><span class="hook-line hook-problem"><span class="hook-label hand">the problem</span>{project.hook!.problem}</span><span class="hook-line hook-solution"><span class="hook-label hand">the fix <span aria-hidden="true">→</span></span>{project.hook!.solution}</span></h1>
         <p>{project.description}</p>
         <div class="case-tags">{project.tags.map(tag => <span class="torn butter mono">{tag}</span>)}</div>
       </div>
       <dl class="case-facts">
         <div class="torn lavender"><dt>Type</dt><dd>Client project</dd></div>
         <div class="torn butter"><dt>Live shop</dt><dd><a class="case-fact-link" href={project.url} target="_blank" rel="noopener noreferrer">kiyoo.id ↗<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
-        <div class="torn mint"><dt>Focus</dt><dd>{project.category}</dd></div>
+        <div class="torn mint"><dt>Focus</dt><dd>AI agents · E-commerce ops</dd></div>
         <div class="torn blush"><dt>Role</dt><dd>Designed and built end to end</dd></div>
       </dl>
     </header>
