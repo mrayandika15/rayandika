@@ -36,10 +36,10 @@ const parts: {title: string; note: string; paragraphs: string[]; shots: Shot[]}[
     ],
     shots: [
       { file: '01-marketing-overview.webp', full: '01-marketing-overview-full.webp', width: 1600, height: 1000,
-        alt: 'Marketing dashboard for the last 30 days: Rp40.87M money in, 353 clean orders, net ROAS 4.26, Rp13.07M profit, a per-order breakdown, and an order funnel from 466 created to 353 clean.',
-        caption: 'Marketing, last 30 days. “Uang masuk” = money in, “Order bersih” = clean orders, “ROAS bersih” = net ROAS. “Per order bersih” breaks one clean order into money in, ad cost, and product cost (HPP).' },
+        alt: 'Marketing dashboard for all orders: Rp126.07M money in, 1,083 clean orders, net ROAS 4.82, Rp48.85M profit, a per-order breakdown, and an order funnel from 1,427 created to 1,083 clean.',
+        caption: 'Marketing, all orders (“Semua”). “Uang masuk” = money in, “Order bersih” = clean orders, “ROAS bersih” = net ROAS. “Per order bersih” breaks one clean order into money in, ad cost, and product cost (HPP).' },
       { file: '02-marketing-ad-comparison.webp', full: '02-marketing-ad-comparison-full.webp', width: 1600, height: 1000,
-        alt: 'Two comparison panels: GMV Max Auto versus GMV Max ROAS 6 campaigns, and days grouped by daily ad spend, each showing ad cost, orders, money in, net ROAS and profit per day.',
+        alt: 'Two comparison panels: GMV Max Auto versus target-ROAS campaigns (ROAS 8.3 and 6), and days grouped by daily ad spend, each showing ad cost, orders, money in, net ROAS and profit per day.',
         caption: 'Which settings earn more? Days grouped by campaign type and by daily ad budget (“Iklan/hari” = ads per day, “Profit/hari” = profit per day, “hari” = days).' },
     ],
   },
@@ -61,12 +61,12 @@ const parts: {title: string; note: string; paragraphs: string[]; shots: Shot[]}[
 ];
 
 const stats = [
-  { value: '353', label: 'clean orders', detail: '466 created; 57 unpaid, 55 cancelled, 1 returned filtered out', color: 'butter' },
-  { value: '4.26', label: 'net ROAS', detail: 'on money that actually landed: Rp40.87M in, Rp9.6M on ads', color: 'mint' },
-  { value: 'Rp13.07M', label: 'profit after ads and product cost', detail: 'last 30 days', color: 'lavender' },
-  { value: 'Rp37k', label: 'profit per order', detail: 'Rp115,773 in · Rp27,208 ads · Rp51,533 product cost · Rp37,033 profit', color: 'blush' },
-  { value: '4.57 vs 3.64', label: 'net ROAS by daily ad budget', detail: 'Rp200–300k days (20 days) vs days above Rp400k', color: 'mint' },
-  { value: '15', label: 'withdrawals split automatically', detail: 'into capital and profit: 286 orders in November', color: 'butter' },
+  { value: '1,083', label: 'clean orders', detail: '1,427 created; 169 unpaid, 170 cancelled, 5 returned filtered out', color: 'butter' },
+  { value: '4.82', label: 'net ROAS', detail: 'on money that actually landed: Rp126.07M in, Rp26.13M on ads', color: 'mint' },
+  { value: 'Rp48.85M', label: 'profit after ads and product cost', detail: 'all orders since 4 Sep 2026 (81 days)', color: 'lavender' },
+  { value: 'Rp45k', label: 'profit per order', detail: 'Rp116,406 in · Rp24,128 ads · Rp47,174 product cost · Rp45,104 profit', color: 'blush' },
+  { value: '6.99 vs 4.24', label: 'net ROAS by daily ad budget', detail: 'under Rp200k (14 days) vs above Rp400k (13 days); big days still earn more profit/day: Rp847k vs Rp565k', color: 'mint' },
+  { value: '15', label: 'withdrawals split automatically', detail: 'every withdrawal since bookkeeping went live on 1 Nov: 286 orders', color: 'butter' },
 ];
 const stack = ['Next.js', 'Supabase (Postgres)', 'Gmail API', 'Cloudinary', 'AI agents', 'Telegram Bot'];
 ---
@@ -128,7 +128,7 @@ const stack = ['Next.js', 'Supabase (Postgres)', 'Gmail API', 'Cloudinary', 'AI 
 
       <section class="story-results reveal" aria-labelledby="results-title">
         <span class="hand">the result</span>
-        <h2 id="results-title">Last 30 days, real numbers.</h2>
+        <h2 id="results-title">All orders, real numbers.</h2>
         <ul class="stat-grid">
           {stats.map(stat => <li class:list={['stat-note', stat.color]}><span class="stat-value display">{stat.value}</span><span class="stat-label">{stat.label}</span><span class="stat-detail mono">{stat.detail}</span></li>)}
         </ul>

@@ -27,8 +27,8 @@ export const projects: Project[] = [
     visual: 'shot', color: 'pink', client: true,
     shot: {
       src: 'images/kiyoo/01-marketing-overview.webp',
-      alt: 'Kiyoo admin Marketing dashboard showing money in, clean orders, net ROAS and profit for the last 30 days.',
-      label: 'kiyoo / marketing · 30 days',
+      alt: 'Kiyoo admin Marketing dashboard showing money in, clean orders, net ROAS and profit across all orders.',
+      label: 'kiyoo / marketing · all orders',
     },
     idea: 'Back office for an online shop: AI agents log every payment from Gmail, compute real ROAS from Shopee data, and track tailor production.',
     focus: ['A finance tracker that fills itself.', 'Real ROAS instead of Shopee’s ROAS.', 'Tailor (vendor) tracking.'],
