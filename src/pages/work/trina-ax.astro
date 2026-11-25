@@ -90,7 +90,7 @@ const stack = ['TypeScript', 'Bun', 'Go', 'Claude Code + Codex engines', 'MCP', 
     <header class="case-header enter">
       <div>
         <span class="mono case-client"><img class="client-mark" src={`${base}/${logo.src}`} alt="" width={logo.width} height={logo.height} />✦ File {project.number} / {project.category}</span>
-        <h1 class="hook-title case-hook"><span class="hook-line hook-problem"><span class="hook-label hand">the problem</span>{project.hook!.problem}</span><span class="hook-line hook-solution"><span class="hook-label hand">the fix <span aria-hidden="true">→</span></span>{project.hook!.solution}</span></h1>
+        <h1 class="hook-title case-hook"><span class="hook-line hook-problem"><span class="hook-label mono">Problem</span>{project.short!.problem}</span><span class="hook-line hook-solution"><span class="hook-label mono">Solution</span>{project.short!.line}</span></h1>
         <p>{project.description}</p>
         <div class="case-tags">{project.tags.map(tag => <span class="torn butter mono">{tag}</span>)}</div>
       </div>

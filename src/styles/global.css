@@ -456,3 +456,17 @@
     .proof-label { font-size: 15px; }
   }
 }
+
+/* Recruiter pass: short Problem / Solution on /work/ cards and case headers */
+@layer components {
+  .work-short { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 20px; }
+  .work-short .short-label { color: var(--muted); opacity: 1; }
+  .work-card .work-short-problem { font-size: 15px; font-weight: 500; color: var(--muted); max-width: 40ch; margin: 0 auto 18px; }
+  .work-card .work-short .proof-chip { margin: 4px auto 0; }
+  .work-card h2.work-short-solution { margin: 0 0 14px; font-size: clamp(22px, 2.3vw, 28px); font-weight: 700; line-height: 1.1; letter-spacing: -.015em; max-width: 22ch; text-wrap: balance; }
+  .work-card h2.work-short-solution > span { font-size: .8em; }
+  .work-short .proof-chip { border-color: var(--ink); padding: 8px 16px 8px 12px; gap: 10px; }
+  .work-short .proof-value { font-size: 24px; }
+  .work-short .proof-label { font-size: 14px; text-align: left; max-width: 18ch; }
+  .case-hook .hook-label.mono { display: block; margin-bottom: 6px; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+}
