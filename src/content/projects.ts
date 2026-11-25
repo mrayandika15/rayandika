@@ -37,7 +37,7 @@ export const projects: Project[] = [
   {
     number: '01', slug: 'kiyoo', category: 'Client: Kiyoo.id · online shop', name: 'Kiyoo.id',
     description: 'Bank emails, Shopee orders and tailor logs, turned into one AI-powered back office. Net ROAS 4.82 across 1,083 orders.',
-    short: { problem: 'Nobody knew if the ads made money.', line: 'Now every order shows real profit.', value: '4.82', label: 'real ROAS on 1,083 orders' },
+    short: { problem: 'Nobody knew if the ads made money.', line: 'Every order shows real profit.', value: '4.82', label: 'real ROAS on 1,083 orders' },
     hook: {
       problem: 'Shopee ads looked profitable. Nobody could prove it.',
       solution: 'AI agents now track real profit on every order.',
@@ -57,7 +57,7 @@ export const projects: Project[] = [
   {
     number: '02', slug: 'landing-pages', category: 'Clients: ZELKA Labs & YVYLORA · landing pages', name: 'Landing pages, 2 brands',
     description: 'ZELKA Labs went from invisible to page one of Google (average position 7.3). YVYLORA got a premium brand page. Both score 98 on Google PageSpeed and load in under a second.',
-    short: { problem: 'Hard to find. Looked like every other shop.', line: 'Now on Google, and built to sell.', value: 'Page 1', label: 'on Google · PageSpeed 98' },
+    short: { problem: 'Hard to find. Looked like every other shop.', line: 'Found on Google, and built to sell.', value: 'Page 1', label: 'on Google · PageSpeed 98' },
     hook: {
       problem: 'A game studio nobody could find on Google, and a premium hair cream that looked like every other shop.',
       solution: 'Two fast landing pages: one built to be found, one built to sell.',
@@ -83,7 +83,7 @@ export const projects: Project[] = [
   {
     number: '03', slug: 'opencraft-docs', category: 'Internal tool · OpenCraft', name: 'OpenCraft document agent',
     description: 'A RAG document agent: type “/opencraft-document” in chat, and it pulls prices, company data and the next document number, writes a branded SPH or MoU PDF and files it in Google Drive.',
-    short: { problem: 'Every price quote was typed by hand.', line: 'Now one chat writes the quote.', value: '1 chat', label: 'to a numbered, branded PDF' },
+    short: { problem: 'Every price quote was typed by hand.', line: 'One chat writes the quote.', value: '1 chat', label: 'to a numbered, branded PDF' },
     hook: {
       problem: 'Every price quote and MoU was rebuilt by hand. Prices, numbering and branding drifted between documents.',
       solution: 'An AI agent writes them from the company’s own price list.',
@@ -103,7 +103,7 @@ export const projects: Project[] = [
   {
     number: '04', slug: 'trina-ax', category: 'Company product · Potenlab', name: 'Trina AX',
     description: 'Self-hosted Claude Code and Codex for a whole company: shared files, team skills, MCP tools and shared AI sessions, with per-person folder permissions. Open source, 445 GitHub stars.',
-    short: { problem: 'Everyone’s AI started from zero.', line: 'Now the whole team shares one AI.', value: '445', label: 'GitHub stars · open source' },
+    short: { problem: 'Everyone’s AI started from zero.', line: 'The whole team shares one AI.', value: '445', label: 'GitHub stars · open source' },
     hook: {
       problem: 'Only the person who set up Claude knew the company. Everyone else’s AI started from an empty folder.',
       solution: 'One shared AI for the whole team, each with their own access.',
