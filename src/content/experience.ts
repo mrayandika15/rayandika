@@ -1,7 +1,7 @@
 export const services = [
   { title: 'AI agent teams', description: 'Specialized agents that coordinate, delegate tasks, and work toward a shared business outcome.', deliverable: 'Multi-agent architecture & orchestration' },
   { title: 'Workflows that do the work', description: 'Agent workflows that connect agents to your tools and automate complex business processes, with human checkpoints where needed.', deliverable: 'Tool integration & workflow automation' },
-  { title: 'Software that holds it together', description: 'Full-stack applications, reusable interfaces, and reliable integrations that turn an agent workflow into a usable product.', deliverable: 'Full-stack development & optimization' },
+  { title: 'Software that holds it together', description: 'Full-stack apps that turn an agent workflow into a usable product, and fast landing pages built to be found on Google.', deliverable: 'Full-stack, landing pages, SEO & speed' },
 ];
 
 export interface Experience {

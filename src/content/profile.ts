@@ -10,7 +10,7 @@ export const profile = {
   portrait: 'images/rayandika.webp',
   description: 'AI Agent Engineer in Bandung, Indonesia. I build multi-agent systems, RAG document agents and AI back offices for real businesses: net ROAS 4.82 on 1,083 orders for an online shop, and a team AI platform with 445★ on GitHub.',
   // AI tools used in the case studies first, then the core stack.
-  tools: ['Claude Code', 'Claude API', 'OpenAI Agents SDK', 'MCP', 'RAG', 'Supabase', 'Gmail API', 'Google Drive API', 'TypeScript', 'Next.js', 'React', 'Node.js', 'Bun', 'Python', 'Tailwind CSS', 'Docker', 'Git'],
+  tools: ['Claude Code', 'Claude API', 'OpenAI Agents SDK', 'MCP', 'RAG', 'Supabase', 'Gmail API', 'Google Drive API', 'TypeScript', 'Next.js', 'React', 'Node.js', 'Bun', 'Python', 'Tailwind CSS', 'SEO', 'Google Search Console', 'Docker', 'Git'],
 };
 
 // One-line proof for each case study: used on the about and 404 pages, and in the home hero unless `hero` is false.
