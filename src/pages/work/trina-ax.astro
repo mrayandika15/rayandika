@@ -10,7 +10,7 @@ const logo = project.logo!;
 interface Shot { file: string; full?: string; width: number; height: number; alt: string; caption: string; narrow?: boolean; }
 const parts: {title: string; note: string; paragraphs: string[]; shots: Shot[]}[] = [
   {
-    note: 'part one: one server',
+    note: 'part one: one server · my part: the connectors',
     title: 'One server, the whole team’s AI.',
     paragraphs: [
       'Connect one Claude or OpenAI account, Google Drive, Slack, any MCP server and the company API once. Everyone gets it in the browser, desktop apps (Mac, Windows, Linux) and phones (iPhone, Android), in six languages.',
@@ -42,7 +42,7 @@ const parts: {title: string; note: string; paragraphs: string[]; shots: Shot[]}[
     ],
   },
   {
-    note: 'part three: access',
+    note: 'part three: access · my part: permissions',
     title: 'Per-person access, checked on every file.',
     paragraphs: [
       'Every file request, from a person or their AI, goes through one permission check on the server. If Mina can’t open Finance, neither can her AI.',
@@ -98,7 +98,7 @@ const stack = ['TypeScript', 'Bun', 'Go', 'Claude Code + Codex engines', 'MCP', 
         <div class="torn lavender"><dt>Type</dt><dd>Company product</dd></div>
         <div class="torn butter"><dt>Product</dt><dd><a class="case-fact-link" href={project.url} target="_blank" rel="noopener noreferrer">ax.trina.app ↗<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
         <div class="torn mint"><dt>Source</dt><dd><a class="case-fact-link" href="https://github.com/trina-app/trina-ax" target="_blank" rel="noopener noreferrer">GitHub ↗<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
-        <div class="torn blush"><dt>Role</dt><dd>Software Engineer Lead, Potenlab</dd></div>
+        <div class="torn blush"><dt>Role</dt><dd>Software Engineer Lead, Potenlab · connectors & permissions</dd></div>
       </dl>
     </header>
 
@@ -154,7 +154,7 @@ const stack = ['TypeScript', 'Bun', 'Go', 'Claude Code + Codex engines', 'MCP', 
         <span class="hand">built with</span>
         <div class="case-tags stack-tags">{stack.map((tool, i) => <span class:list={['torn', ['butter', 'mint', 'lavender', 'blush'][i % 4]]}>{tool}</span>)}</div>
         <span class="hand role-note">my role</span>
-        <p>Company product at Potenlab, where I’m Software Engineer Lead.</p>
+        <p>Company product at Potenlab, where I’m Software Engineer Lead. My part: integrating the connectors (the AI accounts, Google Drive, Gmail, Calendar, Notion, Slack, MCP servers and the company API) and the permissions behind everything, so every file request, from a person or their AI, goes through one access check.</p>
       </section>
     </div>
 

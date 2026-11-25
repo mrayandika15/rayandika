@@ -52,7 +52,7 @@ export const projects: Project[] = [
     focus: ['A finance tracker that fills itself.', 'Real ROAS instead of Shopee’s ROAS.', 'Tailor (vendor) tracking.'],
   },
   {
-    number: '02', slug: 'landing-pages', category: 'Landing pages · 2 brands', name: 'Landing pages, 2 brands', fileLabel: 'LANDING PAGES',
+    number: '02', slug: 'landing-pages', category: 'Clients: ZELKA Labs & YVYLORA · landing pages', name: 'Landing pages, 2 brands',
     description: 'ZELKA Labs went from invisible to page one of Google (average position 7.3). YVYLORA got a premium brand page. Both score 98 on Google PageSpeed and load in under a second.',
     hook: {
       problem: 'A game studio nobody could find on Google, and a premium hair cream that looked like every other shop.',
@@ -62,7 +62,6 @@ export const projects: Project[] = [
     logo2: { src: 'images/landing-pages/yvylora-mark.svg', alt: 'YVYLORA logo mark', width: 64, height: 64 },
     tags: ['SEO', 'Web performance', 'Google Search Console', 'Landing-page design'],
     url: 'https://zelkalabs.id',
-    // `client` marks a hand-written case page (src/pages/work/landing-pages.astro).
     visual: 'shot', color: 'pink', client: true,
     shot: {
       src: 'images/landing-pages/01-zelka-hero.webp',
