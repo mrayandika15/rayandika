@@ -7,6 +7,7 @@ export const profile = {
   location: 'Bandung, Indonesia',
   github: 'https://github.com/mrayandika15',
   upwork: 'https://www.upwork.com/freelancers/~013f1d1af195891734',
+  linkedin: 'https://www.linkedin.com/in/mrayandika/',
   portrait: 'images/rayandika.webp',
   description: 'AI Agent Engineer in Bandung, Indonesia. I build multi-agent systems, RAG document agents and AI back offices for real businesses: net ROAS 4.82 on 1,083 orders for an online shop, and a team AI platform with 445★ on GitHub.',
   // AI tools used in the case studies first, then the core stack.
