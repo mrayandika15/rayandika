@@ -3,11 +3,16 @@ export const profile = {
   name: 'Muhammad Rayandika',
   shortName: 'mrayandika',
   initials: 'MR',
-  role: 'AI Agent Engineer | Multi-Agent Systems & Workflow Automation',
+  role: 'AI Agent Engineer | Multi-Agent Systems, RAG & Workflow Automation',
   location: 'Bandung, Indonesia',
   github: 'https://github.com/mrayandika15',
   upwork: 'https://www.upwork.com/freelancers/~013f1d1af195891734',
   linkedin: 'https://www.linkedin.com/in/mrayandika/',
+  // Fixed-price Upwork Project Catalog offers (approved 2026-11-27).
+  offers: [
+    { label: 'AI agent · from $150', url: 'https://www.upwork.com/services/product/development-it-a-custom-ai-agent-that-automates-one-repetitive-task-in-your-business-2126219525702443486' },
+    { label: 'Landing page · from $200', url: 'https://www.upwork.com/services/product/development-it-a-fast-landing-page-that-ranks-on-google-2126220895497783849' },
+  ],
   portrait: 'images/rayandika.webp',
   description: 'AI Agent Engineer in Bandung, Indonesia. I build multi-agent systems, RAG document agents and AI back offices for real businesses: net ROAS 4.82 on 1,083 orders for an online shop, and a team AI platform with 445★ on GitHub.',
   // AI tools used in the case studies first, then the core stack.
