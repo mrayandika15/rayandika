@@ -31,6 +31,7 @@ const personLd = {
     <p class="hero-summary enter">4+ years in software engineering. Now building intelligent agents,<br class="desktop-break" /> connected tools, and workflows that lighten your workload.</p>
     <p class="hero-proof enter"><span class="hand hero-proof-label">recent:</span>{recentWork.filter(item => item.hero !== false).map((item, i) => <a class:list={['torn mono', ['butter','mint','lavender'][i]]} href={`${base}/work/${item.slug}/`}>{item.label}</a>)}</p>
     <a class="button button-ink enter" href={profile.upwork} target="_blank" rel="noopener noreferrer"><span class="button-icon blue" aria-hidden="true">↗</span> Let’s build your workflow · on Upwork<span class="sr-only"> (opens in a new tab)</span></a>
+    <figure class="hero-video enter"><span class="hero-video-tape" aria-hidden="true"></span><video controls playsinline preload="none" poster={`${base}/video/intro-poster.jpg`} width="1280" height="720"><source src={`${base}/video/intro.mp4`} type="video/mp4" />Your browser can't play this video.</video><figcaption class="hand">hi, it's me &middot; a 90-second intro <span aria-hidden="true">&#9654;</span></figcaption></figure>
     <a class="hero-scroll hand" href="#about-home">there's more down here <span aria-hidden="true">↓</span></a>
     <div class="pencil-curve" aria-hidden="true"></div>
   </section>
